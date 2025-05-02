@@ -48,9 +48,9 @@ export const SuitInsurance = () => {
         <Typography 
           fontSize={40}
           sx={{ 
-            color: '#05058C', 
+            color: '#14284B', 
             fontWeight: 'bold', 
-            mb: 1.5,
+            mb: 3,
             ml: 13,
             textAlign: 'start'
           }}

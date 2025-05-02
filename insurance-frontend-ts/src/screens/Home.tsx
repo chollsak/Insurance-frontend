@@ -5,6 +5,7 @@ import { Banner } from '../components/common/Banner';
 import { Footer } from '../components/common/Footer';
 import { SuitInsurance } from '../components/common/SuitInsurance';
 import { AllInsurance } from '../components/common/AllInsurance';
+import { Promotion } from '../components/common/Promotion';
 
 
 
@@ -16,6 +17,8 @@ const Home: React.FC = () => {
     <Box sx={{mt:'90px'}}>
         <Banner />
         <SuitInsurance/>
+        <AllInsurance/>
+        <Promotion />
     </Box>
         <Box width={'full'} height={3000}>
 
