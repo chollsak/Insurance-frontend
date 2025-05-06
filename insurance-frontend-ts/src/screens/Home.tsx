@@ -14,7 +14,8 @@ const Home: React.FC = () => {
   return (
     <Box sx={{ width: '100%' }}>
         <Navbar />
-    <Box sx={{mt:'90px'}}>
+    <Box>
+        <Box sx={{width:'100%',height:'80px', bgcolor:'#3978E9'}}/>
         <Banner />
         <SuitInsurance/>
         <AllInsurance/>

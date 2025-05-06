@@ -5,7 +5,7 @@ export const Banner = () => {
     <Box>
       <Box 
         width={'full'} 
-        height={510} 
+        height={393.56} 
         sx={{
           backgroundImage: 'url(/src/assets/img/banner/bg.png)',
           backgroundSize: 'cover',
@@ -36,13 +36,13 @@ export const Banner = () => {
             mb:18
           }}
         >
-          <Typography sx={{mb:-1, fontWeight: 'bold',fontSize:'50px' }}>
+          <Typography sx={{mb:-1, fontWeight: 'bold',fontSize:'40px' }}>
             กรุงเทพประกันภัย
           </Typography>
-          <Typography sx={{ mb: -1, fontSize: '30px'}}>
+          <Typography sx={{ mb: -1, fontSize: '24px'}}>
             สินค้าประกันภัยและบริการใหม่
           </Typography>
-          <Typography sx={{ mb: 1, fontSize: '30px'}}>
+          <Typography sx={{ mb: 1, fontSize: '24px'}}>
             รวมทั้งโปรโมชั่นที่คุ้มค่าที่กรุงเทพประกันภัยเตรียมไว้ให้คุณ
           </Typography>
           <Button 
@@ -52,9 +52,9 @@ export const Banner = () => {
               mb:-20,
               '&:hover': { bgcolor: '#001850' },
               borderRadius: '12px',
-              padding: '12px 60px',
+              padding: '10px 45px',
               textTransform: 'none',
-              fontSize:'30px'
+              fontSize:'24px'
             }}
           >
             ค้นหาแผนประกันที่ใช่
@@ -99,8 +99,8 @@ export const Banner = () => {
               src="/src/assets/img/banner/banner1.png"
               alt="Banner 1"
               sx={{ 
-                width: '480px',
-                height: '480px',
+                width: '350px',
+                height: '350px',
                 objectFit: 'cover',
                 borderRadius: '12px',
                 flexShrink: 0
@@ -113,8 +113,8 @@ export const Banner = () => {
               src="/src/assets/img/banner/banner2.png"
               alt="Banner 2"
               sx={{ 
-                width: '480px',
-                height: '480px',
+                width: '350px',
+                height: '350px',
                 objectFit: 'cover',
                 borderRadius: '12px',
                 flexShrink: 0
@@ -127,8 +127,8 @@ export const Banner = () => {
               src="/src/assets/img/banner/banner3.png"
               alt="Banner 3"
               sx={{ 
-                width: '480px',
-                height: '480px',
+                width: '350px',
+                height: '350px',
                 objectFit: 'cover',
                 borderRadius: '12px',
                 flexShrink: 0
@@ -141,8 +141,8 @@ export const Banner = () => {
               src="/src/assets/img/banner/banner4.png"
               alt="Banner 4"
               sx={{ 
-                width: '480px',
-                height: '480px',
+                width: '350px',
+                height: '350px',
                 objectFit: 'cover',
                 borderRadius: '12px',
                 flexShrink: 0

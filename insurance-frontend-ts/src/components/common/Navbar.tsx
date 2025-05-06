@@ -19,7 +19,7 @@ export const Navbar = () => {
         sx={{
           bgcolor: '#3978E9',
           width: 'fit-content',
-          height: '40px',
+          height: '30px',
           display: 'flex',
           gap: '18px',
           paddingX: '20px',
@@ -31,28 +31,28 @@ export const Navbar = () => {
           zIndex: 3,
         }}
       >
-        <Typography sx={{ color: 'white', fontSize: '23px', fontWeight: 500, ml: '5px'}}>ลูกค้าส่วนบุคคล</Typography>
-        <Typography sx={{ color: 'white', fontSize: '23px', fontWeight: 500 }}>สนใจด้านการลงทุน</Typography>
-        <Typography sx={{ color: 'white', fontSize: '23px', fontWeight: 500 }}>สนใจข้อมูลตัวเเทน / นายหน้า</Typography>
-        <Typography sx={{ color: 'white', fontSize: '23px', fontWeight: 500 }}>สำหรับตัวเเทน</Typography>
+        <Typography sx={{ color: 'white', fontSize: '18px', fontWeight: 500, ml: '5px'}}>ลูกค้าส่วนบุคคล</Typography>
+        <Typography sx={{ color: 'white', fontSize: '18px', fontWeight: 500 }}>สนใจด้านการลงทุน</Typography>
+        <Typography sx={{ color: 'white', fontSize: '18px', fontWeight: 500 }}>สนใจข้อมูลตัวเเทน / นายหน้า</Typography>
+        <Typography sx={{ color: 'white', fontSize: '18px', fontWeight: 500 }}>สำหรับตัวเเทน</Typography>
           <Box
             component="img"
             src="src/assets/img/navbar/icon.png" 
             alt="Insurance Icon"
             sx={{
-              height: '30px',
-              width: '30px',
-              mx: 1.6,
+              height: '22px',
+              width: '22px',
+              mx: 0,
             }}
           />
         <Box sx={{
             display: 'flex',
             gap:'5px',
-            mr:'14px'
+            mr:'12px'
         }}>
-            <Typography sx={{ color: 'white', fontSize: '30px', fontWeight: 300 }}>TH</Typography>
-            <Typography sx={{ color: 'white', fontSize: '30px', fontWeight: 300 }}>|</Typography>
-            <Typography sx={{ color: 'white', fontSize: '30px', fontWeight: 500 }}>EN</Typography>
+            <Typography sx={{ color: 'white', fontSize: '22px', fontWeight: 300 }}>TH</Typography>
+            <Typography sx={{ color: 'white', fontSize: '22px', fontWeight: 300 }}>|</Typography>
+            <Typography sx={{ color: 'white', fontSize: '22px', fontWeight: 500 }}>EN</Typography>
         </Box>
       </Box>
 
@@ -61,7 +61,7 @@ export const Navbar = () => {
         sx={{
           bgcolor: '#3978E9',
           width: '100%',
-          height: '10px',
+          height: '9px',
           position: 'absolute',
           borderBottomLeftRadius: "5px",
           top: 0,
@@ -76,7 +76,7 @@ export const Navbar = () => {
         sx={{
           bgcolor: "#3978E9",
           width: "100%",
-          height: "81px",
+          height: "70px",
           position: "absolute",
           top: 0,
           left: 0,
@@ -90,7 +90,7 @@ export const Navbar = () => {
         sx={{
           bgcolor: "white",
           width: "100%",
-          height: "100px",
+          height: "81px",
           border: "1px solid #E6E6E6",
           borderBottomLeftRadius: "15px",
           boxShadow: "10px 5px 5px rgba(0, 0, 0, 0.15)",
@@ -102,17 +102,17 @@ export const Navbar = () => {
         }}
       >
         {/* Content for white box */}
-        <Stack direction={'row'} spacing={20} sx={{mt:3, ml:19}}>
+        <Stack direction={'row'} spacing={15} sx={{mt:3, ml:15}}>
         <Box
             component={'img'}
             src="src/assets/img/navbar/BKI.png" 
             sx={{
-                width:'234px',
-                height:'48px'
+                width:'179px',
+                height:'36px'
             }}
         />
 
-        <Box sx={{ width: '100%', maxWidth: '440px'}}>
+        <Box sx={{ width: '100%', maxWidth: '344px'}}>
             <TextField 
                 fullWidth
                 placeholder="ค้นหาสิ่งที่คุณสนใจ"
@@ -125,7 +125,7 @@ export const Navbar = () => {
                 ),
                 sx: {
                     borderRadius: '10px',
-                    height: '48px',
+                    height: '36px',
                     '& .MuiOutlinedInput-notchedOutline': {
                     borderColor: '#3978E9',
                     border:'3px solid #3978E9'
@@ -141,8 +141,8 @@ export const Navbar = () => {
                     fontSize: '22px',
                     color: '#6b6b6b',
                     backgroundColor: 'white',
-                    mt:2,
-                    ml:1.2
+                    mt:1.5,
+                    ml:3
                 }
                 }}
                 InputLabelProps={{
@@ -153,15 +153,15 @@ export const Navbar = () => {
 
             <Box sx={{
                 display:'flex',
-                gap:'43px',
+                gap:'35px',
             }}>
-                <Typography sx={{ color: '#05058C', fontSize: '28px', fontWeight: 500 ,mt:3, ml:-14.5}}>Home</Typography>
-                <Typography sx={{ color: '#05058C', fontSize: '28px', fontWeight: 500 ,mt:3, }}>Product</Typography>
-                <Typography sx={{ color: '#05058C', fontSize: '28px', fontWeight: 500 ,mt:3, }}>Service</Typography>
-                <Typography sx={{ color: '#05058C', fontSize: '28px', fontWeight: 500 ,mt:3, }}>About BKI</Typography>
-                <Typography sx={{ color: '#05058C', fontSize: '28px', fontWeight: 500 ,mt:3, }}>Investor</Typography>
-                <Typography sx={{ color: '#05058C', fontSize: '28px', fontWeight: 500 ,mt:3, }}>Contact Us</Typography>
-                <Typography sx={{ color: '#05058C', fontSize: '28px', fontWeight: 500 ,mt:3, }}>My BKI</Typography>
+                <Typography sx={{ color: '#05058C', fontSize: '22px', fontWeight: 500 ,mt:2, ml:-8}}>Home</Typography>
+                <Typography sx={{ color: '#05058C', fontSize: '22px', fontWeight: 500 ,mt:2, }}>Product</Typography>
+                <Typography sx={{ color: '#05058C', fontSize: '22px', fontWeight: 500 ,mt:2, }}>Service</Typography>
+                <Typography sx={{ color: '#05058C', fontSize: '22px', fontWeight: 500 ,mt:2, }}>About BKI</Typography>
+                <Typography sx={{ color: '#05058C', fontSize: '22px', fontWeight: 500 ,mt:2, }}>Investor</Typography>
+                <Typography sx={{ color: '#05058C', fontSize: '22px', fontWeight: 500 ,mt:2, }}>Contact Us</Typography>
+                <Typography sx={{ color: '#05058C', fontSize: '22px', fontWeight: 500 ,mt:2, }}>My BKI</Typography>
             </Box>
 
         </Stack>

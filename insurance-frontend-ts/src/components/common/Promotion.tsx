@@ -30,14 +30,15 @@ export const PromotionCard: React.FC<PromotionCardProps> = ({ promo }) => {
     <Box
       sx={{
         width: '100%',
-        maxWidth: '460px',
+        maxWidth: '430px',
         borderRadius: '12px',
         overflow: 'hidden',
         bgcolor: 'white',
         boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
-        height: '100%', // Allow the card to grow as needed
+        height: '450px', // Allow the card to grow as needed
         display: 'flex',
         flexDirection: 'column',
+        
       }}
     >
       {/* Card image at the top - fixed height */}
@@ -46,7 +47,7 @@ export const PromotionCard: React.FC<PromotionCardProps> = ({ promo }) => {
           bgcolor: promo.bgColor,
           width: '100%',
           position: 'relative',
-          height: '300px', // Fixed height for the image
+          height: '250px', // Fixed height for the image
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
@@ -70,16 +71,16 @@ export const PromotionCard: React.FC<PromotionCardProps> = ({ promo }) => {
       {/* Card content section - can grow if content is long */}
       <Box
         sx={{
-          p: 3,
+          p: 2,
           display: 'flex',
           flexDirection: 'column',
           flexGrow: 1,
-          minHeight: '250px', // Minimum height for the content area
+          minHeight: '200px', // Minimum height for the content area
         }}
       >
         <Typography
           sx={{
-            fontSize: '35px',
+            fontSize: '26px',
             fontWeight: 'medium',
             color: '#05058C',
             mb: 1,
@@ -93,7 +94,7 @@ export const PromotionCard: React.FC<PromotionCardProps> = ({ promo }) => {
           sx={{ 
             color: '#3E4767', 
             mb: 'auto', 
-            fontSize: '25px',
+            fontSize: '20px',
             overflow: 'hidden',
             display: '-webkit-box',
             WebkitLineClamp: 4,
@@ -110,13 +111,13 @@ export const PromotionCard: React.FC<PromotionCardProps> = ({ promo }) => {
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
-            mt: 1,
-            mb: -3,
+            mt: 0,
+            mb: -2,
             pt: 0,
             borderTop: '0px solid #eee',
           }}
         >
-          <Typography sx={{ color: '#05058C', fontSize: '25px' }}>
+          <Typography sx={{ color: '#05058C', fontSize: '18px'}}>
             {promo.validUntil}
           </Typography>
 
@@ -124,7 +125,7 @@ export const PromotionCard: React.FC<PromotionCardProps> = ({ promo }) => {
             endIcon={<ArrowForwardIcon />}
             sx={{
               color: '#05058C',
-              fontSize:'30px',
+              fontSize:'22px',
               fontWeight: 'medium',
               textTransform: 'none',
               '&:hover': {
@@ -204,7 +205,7 @@ export const Promotion: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [showDesktopButtons, setShowDesktopButtons] = useState<boolean>(false);
   const containerRef = useRef<HTMLDivElement>(null);
-  const cardsPerView = 3; // Number of cards to show at once on desktop
+  const cardsPerView = 3.1; // Number of cards to show at once on desktop
 
   // Check if we need desktop navigation buttons (if there are more cards than can fit)
   useEffect(() => {
@@ -250,10 +251,10 @@ export const Promotion: React.FC = () => {
       <Box sx={{
         width:'100%',
         py: 2,
-        height: { xs: 'auto', md: '750px' }, // Adjust height for mobile
-        minHeight: '690px',
+        height: { xs: 'auto', md: '550px' }, // Adjust height for mobile
+        minHeight: '550px',
         bgcolor:'#E5EBF5',
-        mt:'120px'
+        mt:'100px'
       }}>
         {/* Content inside the background box */}
         <Box sx={{ 
@@ -261,12 +262,13 @@ export const Promotion: React.FC = () => {
           px: { xs: 2, md: 23 },
           display: 'flex',
           flexDirection: 'column',
+          mt:-1
         }}>
           <Box sx={{ 
             display: 'flex', 
             justifyContent: 'space-between', 
             alignItems: 'center', 
-            mb: 1,
+            mb: 0,
             mt: 1
           }}>
             <Typography 
@@ -274,7 +276,7 @@ export const Promotion: React.FC = () => {
               sx={{ 
                 color: '#0f0b75', 
                 fontWeight: 'bold',
-                fontSize: { xs: '28px', md: '40px' }
+                fontSize: { xs: '28px', md: '32px' }
               }}
             >
               โปรโมชัน
@@ -283,7 +285,7 @@ export const Promotion: React.FC = () => {
               sx={{ 
                 color: 'black', 
                 fontWeight: 'medium',
-                fontSize: { xs: '14px', md: '30px' },
+                fontSize: { xs: '14px', md: '22px' },
                 cursor: 'pointer',
                 display: 'flex',
                 textDecoration:'underline 2px',
@@ -353,14 +355,14 @@ export const Promotion: React.FC = () => {
                 gap: 3,
                 overflow: 'hidden',
                 position: 'relative',
-                height: '550px', // Increased height for cards with long descriptions
+                height: '100%', // Increased height for cards with long descriptions
                 mt: 2
               }}
             >
               <Box
                 sx={{
                   display: 'flex',
-                  gap: 3,
+                  gap: 4,
                   transition: 'transform 0.5s ease',
                   transform: `translateX(-${currentIndex * (100 / cardsPerView)}%)`,
                   height: '100%', // Take full height of parent

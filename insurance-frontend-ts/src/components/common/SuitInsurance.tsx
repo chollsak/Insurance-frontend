@@ -46,12 +46,12 @@ export const SuitInsurance = () => {
         }}
       >
         <Typography 
-          fontSize={40}
+          fontSize={32}
           sx={{ 
-            color: '#14284B', 
+            color: '#05058C', 
             fontWeight: 'bold', 
             mb: 3,
-            ml: 13,
+            ml: 10,
             textAlign: 'start'
           }}
         >
@@ -63,7 +63,7 @@ export const SuitInsurance = () => {
           sx={{
             display: 'flex',
             flexWrap: 'wrap',
-            gap: 9.6,
+            gap: 8.5,
             justifyContent: 'center'
           }}
         >
@@ -76,13 +76,13 @@ export const SuitInsurance = () => {
                   sm: 'calc(33.333% - 16px)',
                   md: 'calc(16.666% - 20px)'
                 },
-                maxWidth: '180px'
+                maxWidth: '136px'
               }}
             >
               <Paper
                 elevation={0}
                 sx={{
-                  borderRadius: '16px',
+                  borderRadius: '8px',
                   overflow: 'hidden',
                   cursor: 'pointer',
                   transition: 'transform 0.3s, box-shadow 0.3s',
@@ -122,7 +122,7 @@ export const SuitInsurance = () => {
                 <Typography
                   sx={{
                     textAlign: 'center',
-                    fontSize:'35px',
+                    fontSize:'28px',
                     mt: 0.5,
                     fontWeight: 'thin',
                     color: '#14284B'
@@ -139,10 +139,10 @@ export const SuitInsurance = () => {
       {/* Blue background box - exactly as you specified */}
       <Box 
         width={'100%'} 
-        height={160} 
+        height={133} 
         bgcolor={'#E6EFFF'} 
         sx={{
-          marginTop: '-180px',  // Pull it up to overlap with content
+          marginTop: '-150px',  // Pull it up to overlap with content
           position: 'relative',
           zIndex: 0            // Lower z-index to appear behind content
         }}

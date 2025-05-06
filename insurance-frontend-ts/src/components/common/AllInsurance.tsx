@@ -81,12 +81,12 @@ export const AllInsurance = () => {
   return (
     <Box sx={{ mb:-5}}>
       <Typography 
-        fontSize={40}
+        fontSize={32}
         sx={{ 
           color: '#05058C', 
           fontWeight: 'bold', 
           my: 3,
-          ml: 23,
+          ml: 20,
           textAlign: 'start'
         }}
       >
@@ -99,7 +99,7 @@ export const AllInsurance = () => {
           flexWrap: 'wrap',
           justifyContent: 'center',
           gap: 4,
-          px: { xs: 4, md: 23 }
+          px: { xs: 4, md: 20 }
         }}
       >
         {insuranceTypes.map((insurance, index) => (
@@ -128,9 +128,9 @@ export const AllInsurance = () => {
               {/* Cover image */}
               <Box
                 sx={{
-                  height: '280px',
+                  height: '260px',
                   width: '100%',
-                  position: 'relative'
+                  position: 'relative',
                 }}
               >
                 <Box
@@ -138,8 +138,8 @@ export const AllInsurance = () => {
                   src={insurance.coverImage}
                   alt={insurance.title}
                   sx={{
-                    width: '100%',
-                    height: '75%',
+                    width: '270px',
+                    height: '160px',
                     objectFit: 'cover'
                   }}
                 />
@@ -148,10 +148,10 @@ export const AllInsurance = () => {
                 <Box
                   sx={{
                     position: 'absolute',
-                    top: '135px',
-                    right: '22px',
-                    width: '100px',
-                    height: '100px',
+                    top: '115px',
+                    right: '15px',
+                    width: '68px',
+                    height: '68px',
                     borderRadius: '50%',
                     backgroundColor: 'white',
                     display: 'flex',
@@ -175,13 +175,13 @@ export const AllInsurance = () => {
               </Box>
 
               {/* Text content */}
-              <Box sx={{ p: 4, mt: -9, mb:5 }}>
+              <Box sx={{ p: 4, mt: -12.5, mb:0 }}>
                 <Typography
                   sx={{
-                    fontSize: '27px',
+                    fontSize: '22px',
                     fontWeight: 'bold',
-                    color: '#05058C',
-                    mb: 1,
+                    color: 'black',
+                    mb: 1.5,
                     lineHeight: 1
                   }}
                 >
@@ -189,8 +189,8 @@ export const AllInsurance = () => {
                 </Typography>
                 <Typography
                   sx={{
-                    fontSize: '24px',
-                    color: '#666',
+                    fontSize: '18px',
+                    color: '#3E4767',
                     lineHeight: 1
                   }}
                 >
