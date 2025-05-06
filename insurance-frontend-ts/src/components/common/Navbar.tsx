@@ -3,30 +3,27 @@ import SearchIcon from '@mui/icons-material/Search';
 import { useEffect, useState } from "react";
 
 export const Navbar = () => {
-  const [zoomLevel, setZoomLevel] = useState(1);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   
-  // Check zoom level on component mount and when window resize events occur
+  // Check window width on component mount and when window resize events occur
   useEffect(() => {
-    const checkZoomLevel = () => {
-      // A common way to detect zoom is to compare device pixel ratio
-      // or compare visual viewport width to layout viewport width
-      const currentZoom = Math.round((window.outerWidth / window.innerWidth) * 100) / 100;
-      setZoomLevel(currentZoom);
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
     };
     
     // Initial check
-    checkZoomLevel();
+    handleResize();
     
-    // Listen for resize events which happen when zooming
-    window.addEventListener('resize', checkZoomLevel);
+    // Listen for resize events
+    window.addEventListener('resize', handleResize);
     
-    return () => window.removeEventListener('resize', checkZoomLevel);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
   
-  // Determine if we should use smaller font (when zoom is greater than 100%)
-  const useSmallFont = zoomLevel > 1.05;
+  // Determine if we should use smaller font based on window width
+  const useSmallFont = windowWidth <= 1434;
   
-  // Font size variables that change based on zoom level
+  // Font size variables that change based on window width
   const menuFontSize = useSmallFont ? '17px' : '18px';
   const langFontSize = useSmallFont ? '20px' : '22px';
   const navLinkFontSize = useSmallFont ? '20px' : '22px';
@@ -36,7 +33,7 @@ export const Navbar = () => {
     <Box 
       sx={{ 
         position: "fixed", 
-        height: useSmallFont?  '30px':"81px",
+        height: "81px",
         width: "100%",
         top: 0,
         left: 0,
