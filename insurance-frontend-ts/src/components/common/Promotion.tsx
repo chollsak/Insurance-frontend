@@ -223,48 +223,72 @@ export const Promotion: React.FC = () => {
     }
   ];
 
-  const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const [showDesktopButtons, setShowDesktopButtons] = useState<boolean>(false);
-  const containerRef = useRef<HTMLDivElement>(null);
-  // Adjust cards per view based on screen width
-  const cardsPerView = useSmallFont ? 2.8 : 3.1;
+  // Use for manual scrolling
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+  const [showLeftShadow, setShowLeftShadow] = useState(false);
+  const [showRightShadow, setShowRightShadow] = useState(true);
+  
+  // State for mobile view
+  const [mobileCurrentIndex, setMobileCurrentIndex] = useState(0);
 
-  // Check if we need desktop navigation buttons (if there are more cards than can fit)
-  useEffect(() => {
-    const checkForOverflow = () => {
-      const container = containerRef.current;
-      if (container) {
-        setShowDesktopButtons(promotions.length > cardsPerView);
-      }
-    };
+  // Handle manual scrolling
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!scrollContainerRef.current) return;
+    setIsDragging(true);
+    setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
+    setScrollLeft(scrollContainerRef.current.scrollLeft);
+  };
 
-    checkForOverflow();
-    window.addEventListener('resize', checkForOverflow);
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !scrollContainerRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollContainerRef.current.offsetLeft;
+    const walk = (x - startX) * 2; // Scroll speed multiplier
+    scrollContainerRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  // Check scroll position to show/hide shadows
+  const handleScroll = () => {
+    if (!scrollContainerRef.current) return;
     
-    return () => {
-      window.removeEventListener('resize', checkForOverflow);
-    };
-  }, [promotions.length, cardsPerView]);
+    const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
+    
+    // Show left shadow if scrolled right
+    setShowLeftShadow(scrollLeft > 0);
+    
+    // Show right shadow if not at the end
+    setShowRightShadow(scrollLeft < scrollWidth - clientWidth - 10);
+  };
 
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (container) {
+      container.addEventListener('scroll', handleScroll);
+      return () => container.removeEventListener('scroll', handleScroll);
+    }
+  }, []);
+
+  // For button navigation
   const handlePrev = (): void => {
-    setCurrentIndex((prevIndex) => {
-      if (prevIndex === 0) {
-        // On mobile, loop to the end
-        return promotions.length - 1;
-      }
-      // On desktop, we might want to move by cardsPerView
-      return Math.max(0, prevIndex - 1);
+    if (!scrollContainerRef.current) return;
+    scrollContainerRef.current.scrollBy({
+      left: -430, // Width of a card
+      behavior: 'smooth'
     });
   };
 
   const handleNext = (): void => {
-    setCurrentIndex((prevIndex) => {
-      if (prevIndex >= promotions.length - 1) {
-        // On mobile, loop to the beginning
-        return 0;
-      }
-      // On desktop, we might want to move by cardsPerView but still check bounds
-      return Math.min(promotions.length - 1, prevIndex + 1);
+    if (!scrollContainerRef.current) return;
+    scrollContainerRef.current.scrollBy({
+      left: 430, // Width of a card
+      behavior: 'smooth'
     });
   };
 
@@ -318,90 +342,119 @@ export const Promotion: React.FC = () => {
             </Typography>
           </Box>
 
-          {/* Desktop view */}
+          {/* Desktop view with scrollable container */}
           <Box sx={{ 
             display: { xs: 'none', md: 'block' },
             position: 'relative',
-            flexGrow: 1
+            flexGrow: 1,
+            mt: 2
           }}>
-            {/* Navigation buttons for desktop */}
-            {showDesktopButtons && (
-              <>
-                <IconButton
-                  sx={{
-                    position: 'absolute',
-                    left: useSmallFont ? '-40px' : '-60px',
-                    top: '50%',
-                    transform: 'translateY(-50%)',
-                    bgcolor: 'white',
-                    boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
-                    '&:hover': {
-                      bgcolor: 'white'
-                    },
-                    zIndex: 2,
-                    display: currentIndex > 0 ? 'flex' : 'none'
-                  }}
-                  onClick={handlePrev}
-                  disabled={currentIndex === 0}
-                >
-                  <ChevronLeftIcon />
-                </IconButton>
-                
-                <IconButton
-                  sx={{
-                    position: 'absolute',
-                    right: useSmallFont ? '-50px' : '-70px',
-                    top: '50%',
-                    transform: 'translateY(-50%)',
-                    bgcolor: 'white',
-                    boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
-                    '&:hover': {
-                      bgcolor: 'white'
-                    },
-                    zIndex: 2,
-                    display: currentIndex < promotions.length - cardsPerView ? 'flex' : 'none'
-                  }}
-                  onClick={handleNext}
-                  disabled={currentIndex >= promotions.length - cardsPerView}
-                >
-                  <ChevronRightIcon />
-                </IconButton>
-              </>
-            )}
-
-            {/* Desktop cards container */}
-            <Box 
-              ref={containerRef}
-              sx={{ 
-                display: 'flex',
-                gap: useSmallFont ? 2 : 3,
-                overflow: 'hidden',
-                position: 'relative',
-                height: '100%',
-                mt: 2
-              }}
-            >
+            {/* Left shadow indicator */}
+            {showLeftShadow && (
               <Box
                 sx={{
-                  display: 'flex',
-                  gap: useSmallFont ? 3 : 4,
-                  transition: 'transform 0.5s ease',
-                  transform: `translateX(-${currentIndex * (100 / cardsPerView)}%)`,
+                  position: 'absolute',
+                  left: 0,
+                  top: 0,
                   height: '100%',
+                  width: '50px',
+                  background: 'linear-gradient(to right, rgba(229, 235, 245, 0.8), rgba(229, 235, 245, 0))',
+                  zIndex: 1,
+                  pointerEvents: 'none'
                 }}
-              >
-                {promotions.map((promo) => (
-                  <Box 
-                    key={promo.id} 
-                    sx={{ 
-                      flex: `0 0 calc(${100 / cardsPerView}% - ${(cardsPerView - 1) * 12 / cardsPerView}px)`,
-                      height: '100%',
-                    }}
-                  >
-                    <PromotionCard promo={promo} useSmallFont={useSmallFont} />
-                  </Box>
-                ))}
-              </Box>
+              />
+            )}
+            
+            {/* Right shadow indicator */}
+            {showRightShadow && (
+              <Box
+                sx={{
+                  position: 'absolute',
+                  right: 0,
+                  top: 0,
+                  height: '100%',
+                  width: '50px',
+                  background: 'linear-gradient(to left, rgba(229, 235, 245, 0.8), rgba(229, 235, 245, 0))',
+                  zIndex: 1,
+                  pointerEvents: 'none'
+                }}
+              />
+            )}
+            
+            {/* Navigation buttons */}
+            <IconButton
+              sx={{
+                position: 'absolute',
+                left: '-40px',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                bgcolor: 'white',
+                boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
+                '&:hover': {
+                  bgcolor: 'white'
+                },
+                zIndex: 2,
+                display: showLeftShadow ? 'flex' : 'none'
+              }}
+              onClick={handlePrev}
+            >
+              <ChevronLeftIcon />
+            </IconButton>
+            
+            <IconButton
+              sx={{
+                position: 'absolute',
+                right: '-40px',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                bgcolor: 'white',
+                boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
+                '&:hover': {
+                  bgcolor: 'white'
+                },
+                zIndex: 2,
+                display: showRightShadow ? 'flex' : 'none'
+              }}
+              onClick={handleNext}
+            >
+              <ChevronRightIcon />
+            </IconButton>
+
+            {/* Scrollable container */}
+            <Box 
+              ref={scrollContainerRef}
+              sx={{ 
+                display: 'flex',
+                overflowX: 'auto',
+                overflowY: 'hidden',
+                height: '100%',
+                scrollbarWidth: 'none', // Firefox
+                '&::-webkit-scrollbar': {
+                  display: 'none'  // Chrome, Safari, Edge
+                },
+                msOverflowStyle: 'none',  // IE
+                cursor: isDragging ? 'grabbing' : 'grab',
+                gap: useSmallFont ? 3 : 4,
+                pb: 2, // Add padding at bottom to avoid scrollbar cutoff
+              }}
+              onMouseDown={handleMouseDown}
+              onMouseUp={handleMouseUp}
+              onMouseLeave={handleMouseUp}
+              onMouseMove={handleMouseMove}
+              onScroll={handleScroll}
+            >
+              {promotions.map((promo) => (
+                <Box 
+                  key={promo.id} 
+                  sx={{ 
+                    flex: '0 0 auto',
+                    width: useSmallFont ? '400px' : '430px',
+                    height: '100%',
+                  }}
+                >
+                  <PromotionCard promo={promo} useSmallFont={useSmallFont} />
+                </Box>
+              ))}
             </Box>
           </Box>
 
@@ -422,7 +475,7 @@ export const Promotion: React.FC = () => {
               <Box sx={{ 
                 display: 'flex', 
                 transition: 'transform 0.5s ease-in-out',
-                transform: `translateX(-${currentIndex * 100}%)`,
+                transform: `translateX(${-mobileCurrentIndex * 100}%)`,
                 width: '100%',
                 height: '100%',
               }}>
@@ -455,7 +508,10 @@ export const Promotion: React.FC = () => {
                 },
                 zIndex: 2
               }}
-              onClick={handlePrev}
+              onClick={() => {
+                const newIndex = mobileCurrentIndex === 0 ? promotions.length - 1 : mobileCurrentIndex - 1;
+                setMobileCurrentIndex(newIndex);
+              }}
             >
               <ChevronLeftIcon />
             </IconButton>
@@ -473,7 +529,10 @@ export const Promotion: React.FC = () => {
                 },
                 zIndex: 2
               }}
-              onClick={handleNext}
+              onClick={() => {
+                const newIndex = mobileCurrentIndex >= promotions.length - 1 ? 0 : mobileCurrentIndex + 1;
+                setMobileCurrentIndex(newIndex);
+              }}
             >
               <ChevronRightIcon />
             </IconButton>
@@ -491,11 +550,11 @@ export const Promotion: React.FC = () => {
                     width: 8,
                     height: 8,
                     borderRadius: '50%',
-                    bgcolor: index === currentIndex ? '#0f0b75' : '#ccc',
+                    bgcolor: index === mobileCurrentIndex ? '#0f0b75' : '#ccc',
                     mx: 0.5,
                     cursor: 'pointer'
                   }}
-                  onClick={() => setCurrentIndex(index)}
+                  onClick={() => setMobileCurrentIndex(index)}
                 />
               ))}
             </Box>
