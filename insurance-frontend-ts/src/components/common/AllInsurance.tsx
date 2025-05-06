@@ -1,7 +1,5 @@
-import React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import Paper from '@mui/material/Paper';
 
 export const AllInsurance = () => {
   // Insurance type data with cover images and icons
@@ -81,7 +79,7 @@ export const AllInsurance = () => {
   ];
 
   return (
-    <Box sx={{ }}>
+    <Box sx={{ mb:-5}}>
       <Typography 
         fontSize={40}
         sx={{ 
