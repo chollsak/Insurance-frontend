@@ -23,9 +23,10 @@ interface PromoData {
 
 interface PromotionCardProps {
   promo: PromoData;
+  useSmallFont: boolean;
 }
 
-export const PromotionCard: React.FC<PromotionCardProps> = ({ promo }) => {
+export const PromotionCard: React.FC<PromotionCardProps> = ({ promo, useSmallFont }) => {
   return (
     <Box
       sx={{
@@ -35,10 +36,9 @@ export const PromotionCard: React.FC<PromotionCardProps> = ({ promo }) => {
         overflow: 'hidden',
         bgcolor: 'white',
         boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
-        height: '450px', // Allow the card to grow as needed
+        height: '450px',
         display: 'flex',
         flexDirection: 'column',
-        
       }}
     >
       {/* Card image at the top - fixed height */}
@@ -47,12 +47,12 @@ export const PromotionCard: React.FC<PromotionCardProps> = ({ promo }) => {
           bgcolor: promo.bgColor,
           width: '100%',
           position: 'relative',
-          height: '250px', // Fixed height for the image
+          height: '250px',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
           overflow: 'hidden',
-          flexShrink: 0, // Prevent image from shrinking
+          flexShrink: 0,
         }}
       >
         {/* Main image */}
@@ -75,12 +75,12 @@ export const PromotionCard: React.FC<PromotionCardProps> = ({ promo }) => {
           display: 'flex',
           flexDirection: 'column',
           flexGrow: 1,
-          minHeight: '200px', // Minimum height for the content area
+          minHeight: '200px',
         }}
       >
         <Typography
           sx={{
-            fontSize: '26px',
+            fontSize: useSmallFont ? '24px' : '26px',
             fontWeight: 'medium',
             color: '#05058C',
             mb: 1,
@@ -93,8 +93,8 @@ export const PromotionCard: React.FC<PromotionCardProps> = ({ promo }) => {
         <Typography 
           sx={{ 
             color: '#3E4767', 
-            mb: 'auto', 
-            fontSize: '20px',
+            mb: 'auto',
+            fontSize: useSmallFont ? '18px' : '20px',
             overflow: 'hidden',
             display: '-webkit-box',
             WebkitLineClamp: 4,
@@ -117,7 +117,7 @@ export const PromotionCard: React.FC<PromotionCardProps> = ({ promo }) => {
             borderTop: '0px solid #eee',
           }}
         >
-          <Typography sx={{ color: '#05058C', fontSize: '18px'}}>
+          <Typography sx={{ color: '#05058C', fontSize: useSmallFont ? '16px' : '18px'}}>
             {promo.validUntil}
           </Typography>
 
@@ -125,7 +125,7 @@ export const PromotionCard: React.FC<PromotionCardProps> = ({ promo }) => {
             endIcon={<ArrowForwardIcon />}
             sx={{
               color: '#05058C',
-              fontSize:'22px',
+              fontSize: useSmallFont ? '20px' : '22px',
               fontWeight: 'medium',
               textTransform: 'none',
               '&:hover': {
@@ -143,6 +143,27 @@ export const PromotionCard: React.FC<PromotionCardProps> = ({ promo }) => {
 };
 
 export const Promotion: React.FC = () => {
+  // State for window width monitoring
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  
+  // Check window width on component mount and when window resize events occur
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    
+    // Initial check
+    handleResize();
+    
+    // Listen for resize events
+    window.addEventListener('resize', handleResize);
+    
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  
+  // Updated breakpoint to 1450px as requested
+  const useSmallFont = windowWidth <= 1450;
+  
   // Promotion data
   const promotions: PromoData[] = [
     {
@@ -205,7 +226,8 @@ export const Promotion: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [showDesktopButtons, setShowDesktopButtons] = useState<boolean>(false);
   const containerRef = useRef<HTMLDivElement>(null);
-  const cardsPerView = 3.1; // Number of cards to show at once on desktop
+  // Adjust cards per view based on screen width
+  const cardsPerView = useSmallFont ? 2.8 : 3.1;
 
   // Check if we need desktop navigation buttons (if there are more cards than can fit)
   useEffect(() => {
@@ -222,7 +244,7 @@ export const Promotion: React.FC = () => {
     return () => {
       window.removeEventListener('resize', checkForOverflow);
     };
-  }, [promotions.length]);
+  }, [promotions.length, cardsPerView]);
 
   const handlePrev = (): void => {
     setCurrentIndex((prevIndex) => {
@@ -251,7 +273,7 @@ export const Promotion: React.FC = () => {
       <Box sx={{
         width:'100%',
         py: 2,
-        height: { xs: 'auto', md: '550px' }, // Adjust height for mobile
+        height: { xs: 'auto', md: '550px' },
         minHeight: '550px',
         bgcolor:'#E5EBF5',
         mt:'100px'
@@ -259,7 +281,7 @@ export const Promotion: React.FC = () => {
         {/* Content inside the background box */}
         <Box sx={{ 
           height: '100%', 
-          px: { xs: 2, md: 23 },
+          px: { xs: 2, md: useSmallFont ? 15 : 23 },
           display: 'flex',
           flexDirection: 'column',
           mt:-1
@@ -276,7 +298,7 @@ export const Promotion: React.FC = () => {
               sx={{ 
                 color: '#0f0b75', 
                 fontWeight: 'bold',
-                fontSize: { xs: '28px', md: '32px' }
+                fontSize: useSmallFont ? '30px' : '32px'
               }}
             >
               โปรโมชัน
@@ -285,7 +307,7 @@ export const Promotion: React.FC = () => {
               sx={{ 
                 color: 'black', 
                 fontWeight: 'medium',
-                fontSize: { xs: '14px', md: '22px' },
+                fontSize: useSmallFont ? '20px' : '22px',
                 cursor: 'pointer',
                 display: 'flex',
                 textDecoration:'underline 2px',
@@ -308,7 +330,7 @@ export const Promotion: React.FC = () => {
                 <IconButton
                   sx={{
                     position: 'absolute',
-                    left: '-60px',
+                    left: useSmallFont ? '-40px' : '-60px',
                     top: '50%',
                     transform: 'translateY(-50%)',
                     bgcolor: 'white',
@@ -328,7 +350,7 @@ export const Promotion: React.FC = () => {
                 <IconButton
                   sx={{
                     position: 'absolute',
-                    right: '-70px',
+                    right: useSmallFont ? '-50px' : '-70px',
                     top: '50%',
                     transform: 'translateY(-50%)',
                     bgcolor: 'white',
@@ -352,20 +374,20 @@ export const Promotion: React.FC = () => {
               ref={containerRef}
               sx={{ 
                 display: 'flex',
-                gap: 3,
+                gap: useSmallFont ? 2 : 3,
                 overflow: 'hidden',
                 position: 'relative',
-                height: '100%', // Increased height for cards with long descriptions
+                height: '100%',
                 mt: 2
               }}
             >
               <Box
                 sx={{
                   display: 'flex',
-                  gap: 4,
+                  gap: useSmallFont ? 3 : 4,
                   transition: 'transform 0.5s ease',
                   transform: `translateX(-${currentIndex * (100 / cardsPerView)}%)`,
-                  height: '100%', // Take full height of parent
+                  height: '100%',
                 }}
               >
                 {promotions.map((promo) => (
@@ -373,10 +395,10 @@ export const Promotion: React.FC = () => {
                     key={promo.id} 
                     sx={{ 
                       flex: `0 0 calc(${100 / cardsPerView}% - ${(cardsPerView - 1) * 12 / cardsPerView}px)`,
-                      height: '100%', // Ensure all cards are same height
+                      height: '100%',
                     }}
                   >
-                    <PromotionCard promo={promo} />
+                    <PromotionCard promo={promo} useSmallFont={useSmallFont} />
                   </Box>
                 ))}
               </Box>
@@ -395,7 +417,7 @@ export const Promotion: React.FC = () => {
               overflow: 'hidden', 
               position: 'relative',
               borderRadius: '12px',
-              height: '600px', // Increased height for mobile as well
+              height: '600px',
             }}>
               <Box sx={{ 
                 display: 'flex', 
@@ -413,7 +435,7 @@ export const Promotion: React.FC = () => {
                       height: '100%',
                     }}
                   >
-                    <PromotionCard promo={promo} />
+                    <PromotionCard promo={promo} useSmallFont={useSmallFont} />
                   </Box>
                 ))}
               </Box>

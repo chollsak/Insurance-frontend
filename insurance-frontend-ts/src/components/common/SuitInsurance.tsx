@@ -1,9 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 
 export const SuitInsurance = () => {
+  // State for window width monitoring
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  
+  // Check window width on component mount and when window resize events occur
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    
+    // Initial check
+    handleResize();
+    
+    // Listen for resize events
+    window.addEventListener('resize', handleResize);
+    
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  
+  // Use the same breakpoint as other components (1434px)
+  const useSmallFont = windowWidth <= 1450;
+  
   // Insurance category data
   const insuranceCategories = [
     {
@@ -38,20 +59,19 @@ export const SuitInsurance = () => {
       <Box 
         sx={{ 
           width: '100%', 
-          py: 3,
-          px: { xs: 2, md: 10 },
-
+          py: useSmallFont ? 2.5 : 3,
+          px: { xs: 2, md: useSmallFont ? 8 : 10 },
           position: 'relative',
           zIndex: 1
         }}
       >
         <Typography 
-          fontSize={32}
+          fontSize={useSmallFont ? 30 : 32}
           sx={{ 
             color: '#05058C', 
             fontWeight: 'bold', 
-            mb: 3,
-            ml: 10,
+            mb: useSmallFont ? 2.5 : 3,
+            ml: useSmallFont ? 8 : 10,
             textAlign: 'start'
           }}
         >
@@ -63,7 +83,7 @@ export const SuitInsurance = () => {
           sx={{
             display: 'flex',
             flexWrap: 'wrap',
-            gap: 8.5,
+            gap: useSmallFont ? 7 : 8.5,
             justifyContent: 'center'
           }}
         >
@@ -76,7 +96,7 @@ export const SuitInsurance = () => {
                   sm: 'calc(33.333% - 16px)',
                   md: 'calc(16.666% - 20px)'
                 },
-                maxWidth: '136px'
+                maxWidth: useSmallFont ? '130px' : '136px'
               }}
             >
               <Paper
@@ -122,7 +142,7 @@ export const SuitInsurance = () => {
                 <Typography
                   sx={{
                     textAlign: 'center',
-                    fontSize:'28px',
+                    fontSize: useSmallFont ? '26px' : '28px',
                     mt: 0.5,
                     fontWeight: 'thin',
                     color: '#14284B'
@@ -139,10 +159,10 @@ export const SuitInsurance = () => {
       {/* Blue background box - exactly as you specified */}
       <Box 
         width={'100%'} 
-        height={133} 
+        height={useSmallFont ? 130 : 133} 
         bgcolor={'#E6EFFF'} 
         sx={{
-          marginTop: '-150px',  // Pull it up to overlap with content
+          marginTop: useSmallFont ? '-145px' : '-150px',  // Pull it up to overlap with content
           position: 'relative',
           zIndex: 0            // Lower z-index to appear behind content
         }}

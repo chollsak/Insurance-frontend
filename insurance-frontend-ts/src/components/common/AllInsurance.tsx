@@ -1,7 +1,29 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import { useState, useEffect } from 'react';
 
 export const AllInsurance = () => {
+  // State for window width monitoring
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  
+  // Check window width on component mount and when window resize events occur
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    
+    // Initial check
+    handleResize();
+    
+    // Listen for resize events
+    window.addEventListener('resize', handleResize);
+    
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  
+  // Use the specified breakpoint of 1450px
+  const useSmallFont = windowWidth <= 1450;
+  
   // Insurance type data with cover images and icons
   const insuranceTypes = [
     {
@@ -81,12 +103,12 @@ export const AllInsurance = () => {
   return (
     <Box sx={{ mb:-5}}>
       <Typography 
-        fontSize={32}
+        fontSize={useSmallFont ? 30 : 32}
         sx={{ 
           color: '#05058C', 
           fontWeight: 'bold', 
-          my: 3,
-          ml: 20,
+          my: useSmallFont ? 2.5 : 3,
+          ml: useSmallFont ? 16 : 20,
           textAlign: 'start'
         }}
       >
@@ -98,8 +120,8 @@ export const AllInsurance = () => {
           display: 'flex',
           flexWrap: 'wrap',
           justifyContent: 'center',
-          gap: 4,
-          px: { xs: 4, md: 20 }
+          gap: useSmallFont ? 3 : 4,
+          px: { xs: 4, md: useSmallFont ? 16 : 20 }
         }}
       >
         {insuranceTypes.map((insurance, index) => (
@@ -128,7 +150,7 @@ export const AllInsurance = () => {
               {/* Cover image */}
               <Box
                 sx={{
-                  height: '260px',
+                  height: useSmallFont ? '250px' : '260px',
                   width: '100%',
                   position: 'relative',
                 }}
@@ -138,8 +160,8 @@ export const AllInsurance = () => {
                   src={insurance.coverImage}
                   alt={insurance.title}
                   sx={{
-                    width: '270px',
-                    height: '160px',
+                    width: useSmallFont ? '260px' : '270px',
+                    height: useSmallFont ? '155px' : '160px',
                     objectFit: 'cover'
                   }}
                 />
@@ -150,8 +172,8 @@ export const AllInsurance = () => {
                     position: 'absolute',
                     top: '115px',
                     right: '15px',
-                    width: '68px',
-                    height: '68px',
+                    width: useSmallFont ? '65px' : '68px',
+                    height: useSmallFont ? '65px' : '68px',
                     borderRadius: '50%',
                     backgroundColor: 'white',
                     display: 'flex',
@@ -175,10 +197,10 @@ export const AllInsurance = () => {
               </Box>
 
               {/* Text content */}
-              <Box sx={{ p: 4, mt: -12.5, mb:0 }}>
+              <Box sx={{ p: useSmallFont ? 3.5 : 4, mt: useSmallFont ? -12 : -12.5, mb:0 }}>
                 <Typography
                   sx={{
-                    fontSize: '22px',
+                    fontSize: useSmallFont ? '20px' : '22px',
                     fontWeight: 'bold',
                     color: 'black',
                     mb: 1.5,
@@ -189,7 +211,7 @@ export const AllInsurance = () => {
                 </Typography>
                 <Typography
                   sx={{
-                    fontSize: '18px',
+                    fontSize: useSmallFont ? '16px' : '18px',
                     color: '#3E4767',
                     lineHeight: 1
                   }}

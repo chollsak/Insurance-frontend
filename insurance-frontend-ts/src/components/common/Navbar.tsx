@@ -21,7 +21,7 @@ export const Navbar = () => {
   }, []);
   
   // Determine if we should use smaller font based on window width
-  const useSmallFont = windowWidth <= 1434;
+  const useSmallFont = windowWidth <= 1450;
   
   // Font size variables that change based on window width
   const menuFontSize = useSmallFont ? '17px' : '18px';

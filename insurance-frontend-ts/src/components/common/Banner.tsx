@@ -1,11 +1,32 @@
 import { Box, Typography, Button } from "@mui/material"
+import { useEffect, useState } from "react";
 
 export const Banner = () => {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  
+  // Check window width on component mount and when window resize events occur
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    
+    // Initial check
+    handleResize();
+    
+    // Listen for resize events
+    window.addEventListener('resize', handleResize);
+    
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  
+  // Use the same breakpoint as Navbar
+  const useSmallFont = windowWidth <= 1450;
+  
   return (
     <Box>
       <Box 
         width={'full'} 
-        height={393.56} 
+        height={useSmallFont ? 350 : 393.56} 
         sx={{
           backgroundImage: 'url(/src/assets/img/banner/bg.png)',
           backgroundSize: 'cover',
@@ -13,7 +34,7 @@ export const Banner = () => {
           position: 'relative',
           display: 'flex',
           alignItems: 'center',
-          paddingLeft: '130px',
+          paddingLeft: useSmallFont ? '80px' : '130px',
           '&::before': {
             content: '""',
             position: 'absolute',
@@ -30,31 +51,31 @@ export const Banner = () => {
         <Box 
           sx={{ 
             color: 'white', 
-            width: '30%', 
+            width: useSmallFont ? '35%' : '30%', 
             zIndex: 2,
             position: 'relative',
-            mb:18
+            mb: useSmallFont ? 16 : 18
           }}
         >
-          <Typography sx={{mb:-1, fontWeight: 'bold',fontSize:'40px' }}>
+          <Typography sx={{mb:-1, fontWeight: 'bold', fontSize: useSmallFont ? '36px' : '40px' }}>
             กรุงเทพประกันภัย
           </Typography>
-          <Typography sx={{ mb: -1, fontSize: '24px'}}>
+          <Typography sx={{ mb: -1, fontSize: useSmallFont ? '22px' : '24px'}}>
             สินค้าประกันภัยและบริการใหม่
           </Typography>
-          <Typography sx={{ mb: 1, fontSize: '24px'}}>
+          <Typography sx={{ mb: 1, fontSize: useSmallFont ? '22px' : '24px'}}>
             รวมทั้งโปรโมชั่นที่คุ้มค่าที่กรุงเทพประกันภัยเตรียมไว้ให้คุณ
           </Typography>
           <Button 
             variant="contained" 
             sx={{ 
               bgcolor: '#05058C', 
-              mb:-20,
+              mb: -20,
               '&:hover': { bgcolor: '#001850' },
               borderRadius: '12px',
-              padding: '10px 45px',
+              padding: useSmallFont ? '8px 35px' : '10px 45px',
               textTransform: 'none',
-              fontSize:'24px'
+              fontSize: useSmallFont ? '22px' : '24px'
             }}
           >
             ค้นหาแผนประกันที่ใช่
@@ -67,7 +88,7 @@ export const Banner = () => {
           <Box
             sx={{
               display: 'flex',
-              gap: 3,
+              gap: useSmallFont ? 2 : 3,
               overflowX: 'auto',
               overflowY: 'hidden',
               scrollbarWidth: 'thin',
@@ -99,8 +120,8 @@ export const Banner = () => {
               src="/src/assets/img/banner/banner1.png"
               alt="Banner 1"
               sx={{ 
-                width: '350px',
-                height: '350px',
+                width: useSmallFont ? '300px' : '350px',
+                height: useSmallFont ? '300px' : '350px',
                 objectFit: 'cover',
                 borderRadius: '12px',
                 flexShrink: 0
@@ -113,8 +134,8 @@ export const Banner = () => {
               src="/src/assets/img/banner/banner2.png"
               alt="Banner 2"
               sx={{ 
-                width: '350px',
-                height: '350px',
+                width: useSmallFont ? '300px' : '350px',
+                height: useSmallFont ? '300px' : '350px',
                 objectFit: 'cover',
                 borderRadius: '12px',
                 flexShrink: 0
@@ -127,8 +148,8 @@ export const Banner = () => {
               src="/src/assets/img/banner/banner3.png"
               alt="Banner 3"
               sx={{ 
-                width: '350px',
-                height: '350px',
+                width: useSmallFont ? '300px' : '350px',
+                height: useSmallFont ? '300px' : '350px',
                 objectFit: 'cover',
                 borderRadius: '12px',
                 flexShrink: 0
@@ -141,8 +162,8 @@ export const Banner = () => {
               src="/src/assets/img/banner/banner4.png"
               alt="Banner 4"
               sx={{ 
-                width: '350px',
-                height: '350px',
+                width: useSmallFont ? '300px' : '350px',
+                height: useSmallFont ? '300px' : '350px',
                 objectFit: 'cover',
                 borderRadius: '12px',
                 flexShrink: 0
