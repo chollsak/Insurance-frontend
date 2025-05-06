@@ -26,7 +26,7 @@ export const Navbar = () => {
   // Font size variables that change based on window width
   const menuFontSize = useSmallFont ? '17px' : '18px';
   const langFontSize = useSmallFont ? '20px' : '22px';
-  const navLinkFontSize = useSmallFont ? '20px' : '22px';
+  const navLinkFontSize = useSmallFont ? '19px' : '22px';
   const searchFontSize = useSmallFont ? '22px' : '22px';
   
   return (
@@ -143,7 +143,7 @@ export const Navbar = () => {
             }}
           />
 
-          <Box sx={{ width: '100%', maxWidth: useSmallFont ? '320px' : '344px'}}>
+          <Box sx={{ width: '100%', maxWidth: useSmallFont ? '300px' : '344px'}}>
             <TextField 
               fullWidth
               placeholder="ค้นหาสิ่งที่คุณสนใจ"
@@ -184,7 +184,7 @@ export const Navbar = () => {
 
           <Box sx={{
             display:'flex',
-            gap: useSmallFont ? '30px' : '35px',
+            gap: useSmallFont ? '20px' : '35px',
           }}>
             <Typography sx={{ color: '#05058C', fontSize: navLinkFontSize, fontWeight: 500, mt:2, ml: useSmallFont ? 2 : -8}}>Home</Typography>
             <Typography sx={{ color: '#05058C', fontSize: navLinkFontSize, fontWeight: 500, mt:2 }}>Product</Typography>
