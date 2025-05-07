@@ -1,8 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Typography, Button } from '@mui/material';
 
 export const Footer = () => {
   const [showCookieConsent, setShowCookieConsent] = useState(true);
+  // State for window width monitoring
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  
+  // Check window width on component mount and when window resize events occur
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    
+    // Initial check
+    handleResize();
+    
+    // Listen for resize events
+    window.addEventListener('resize', handleResize);
+    
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  
+  // Use the 1450px breakpoint
+  const useSmallFont = windowWidth <= 1450;
 
   const handleAcceptAll = () => {
     setShowCookieConsent(false);
@@ -25,8 +45,8 @@ export const Footer = () => {
         right: 0,
         backgroundColor: '#05058C', // Deep blue color
         color: 'white',
-        padding: '25px',
-        paddingLeft: '50px',
+        padding: useSmallFont ? '16px' : '18px',
+        paddingLeft: useSmallFont ? '30px' : '40px',
         zIndex: 9999,
         display: 'flex',
         flexDirection: { xs: 'column', md: 'row' },
@@ -35,13 +55,21 @@ export const Footer = () => {
       }}
     >
       <Box sx={{ flex: 1 }}>
-        <Typography fontSize={'30px'} sx={{ fontWeight: 'bold', mb: 1}}>
+        <Typography 
+          fontSize={useSmallFont ? '22px' : '24px'} 
+          sx={{ fontWeight: 'bold'}}
+        >
           เว็บไซต์นี้มีการจัดเก็บคุกกี้ (Cookies)
         </Typography>
-        <Typography fontSize={'25px'} sx={{mb:-1}}>
+        <Typography 
+          fontSize={useSmallFont ? '16px' : '18px'} 
+          sx={{mb:-0.5}}
+        >
           เพื่อพัฒนาปรับปรุงการนำเสนอเนื้อหาที่ดีสำหรับผู้ใช้งาน และอำนวยความสะดวกให้ผู้ใช้งานสามารถใช้บริการต่างๆ ภายในเว็บไซต์ได้ง่ายและมีประสิทธิภาพยิ่งขึ้น
         </Typography>
-        <Typography fontSize={'25px'}>
+        <Typography 
+          fontSize={useSmallFont ? '16px' : '18px'}
+        >
           ท่านสามารถศึกษารายละเอียดคุกกี้ได้ที่{' '}
           <Box
             component="span"
@@ -59,7 +87,7 @@ export const Footer = () => {
       <Box
         sx={{
           display: 'flex',
-          gap: 5,
+          gap: useSmallFont ? 4 : 5,
           mt: { xs: 2, md: 2 },
           flexDirection: { xs: 'column', sm: 'row' },
           width: { xs: '100%', md: 'auto' },
@@ -72,8 +100,8 @@ export const Footer = () => {
             borderColor: 'white',
             color: 'white',
             borderRadius: 2,
-            padding: '8px 70px',
-            fontSize:'30px',
+            padding: useSmallFont ? '2px 50px' : '2px 60px',
+            fontSize: useSmallFont ? '22px' : '24px',
             '&:hover': {
               borderColor: 'white',
               backgroundColor: 'rgba(255, 255, 255, 0.1)',
@@ -89,9 +117,9 @@ export const Footer = () => {
             backgroundColor: 'white',
             color: '#05058C',
             borderRadius: 2,
-            padding: '8px 50px',
-            fontSize:'30px',
-            marginRight:'50px',
+            padding: useSmallFont ? '6px 40px' : '8px 50px',
+            fontSize: useSmallFont ? '22px' : '24px',
+            marginRight: useSmallFont ? '40px' : '50px',
             '&:hover': {
               backgroundColor: 'rgba(255, 255, 255, 0.8)',
             },
