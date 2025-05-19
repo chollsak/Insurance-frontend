@@ -5,10 +5,13 @@ import IconButton from '@mui/material/IconButton';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import { Button } from '@mui/material';
+import { Button, CircularProgress } from '@mui/material';
+import { Link } from 'react-router-dom';
+import { promotionService } from '../../api/services/promotionService';
 
+// Keep your original PromoData interface
 interface PromoData {
-  id: number;
+  id: string;  // Changed from number to string to match backend
   title: string;
   subTitle: string;
   description: string;
@@ -19,6 +22,13 @@ interface PromoData {
   bgColor: string;
   giftImage?: string;
   giftText?: string;
+  // Additional fields from backend (optional for backward compatibility)
+  titleTh?: string;
+  titleEn?: string;
+  descriptionTh?: string;
+  descriptionEn?: string;
+  coverImageUrl?: string;
+  status?: string;
 }
 
 interface PromotionCardProps {
@@ -65,6 +75,10 @@ export const PromotionCard: React.FC<PromotionCardProps> = ({ promo, useSmallFon
             height: '100%',
             objectFit: 'cover',
           }}
+          onError={(e) => {
+            console.error('Image failed to load:', promo.image);
+            e.currentTarget.src = 'data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22430%22%20height%3D%22250%22%20viewBox%3D%220%200%20430%20250%22%3E%3Crect%20fill%3D%22%23a8bbd6%22%20width%3D%22430%22%20height%3D%22250%22%2F%3E%3Ctext%20fill%3D%22%23ffffff%22%20font-family%3D%22Arial%2CVerdana%2CSans-serif%22%20font-size%3D%2220%22%20x%3D%22215%22%20y%3D%22125%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3EPromotion%20Image%3C%2Ftext%3E%3C%2Fsvg%3E';
+          }}
         />
       </Box>
 
@@ -87,7 +101,7 @@ export const PromotionCard: React.FC<PromotionCardProps> = ({ promo, useSmallFon
             lineHeight: 1.2,
           }}
         >
-          {promo.title}
+          {promo.titleTh}
         </Typography>
 
         <Typography 
@@ -123,6 +137,8 @@ export const PromotionCard: React.FC<PromotionCardProps> = ({ promo, useSmallFon
 
           <Button
             endIcon={<ArrowForwardIcon />}
+            component={Link}
+            to={`/promotions/${promo.id}`}
             sx={{
               color: '#05058C',
               fontSize: useSmallFont ? '20px' : '22px',
@@ -143,6 +159,11 @@ export const PromotionCard: React.FC<PromotionCardProps> = ({ promo, useSmallFon
 };
 
 export const Promotion: React.FC = () => {
+  // State for promotions data
+  const [promotions, setPromotions] = useState<PromoData[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+  
   // State for window width monitoring
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   
@@ -164,64 +185,50 @@ export const Promotion: React.FC = () => {
   // Updated breakpoint to 1450px as requested
   const useSmallFont = windowWidth <= 1450;
   
-  // Promotion data
-  const promotions: PromoData[] = [
-    {
-      id: 1,
-      title: 'เบี้ยประกันภัยเริ่มต้น 135 บาท',
-      subTitle: 'เที่ยวสนุก อุ่นใจตลอดทริป ด้วยประกันภัยการเดินทางต่างประเทศ Worldwide',
-      description: 'คุ้มครองหลักล้าน ค่ารักษาพยาบาลในต่างประเทศ พร้อมบริการช่วยเหลือฉุกเฉินตลอด 24 ชั่วโมง',
-      discount: '18%',
-      couponCode: 'CTANY',
-      validUntil: 'วันนี้ - 31 มีนาคม 2568',
-      image: '/src/assets/img/promotion/promotion1.png',
-      bgColor: '#a8bbd6',
-    },
-    {
-      id: 2,
-      title: 'New year surpise',
-      subTitle: '',
-      description: 'เมื่อทำประกันภัยการเดินทางต่างประเทศ (Travel Delight) รับเพิ่มสิทธิพิเศษ 2 ต่อ',
-      discount: '',
-      couponCode: '',
-      validUntil: 'วันนี้ - 31 มีนาคม 2568',
-      image: '/src/assets/img/promotion/promotion3.png',
-      bgColor: '#a8bbd6',
-    },
-    {
-      id: 3,
-      title: 'ดีลพิเศษ คุ้มค่า x2',
-      subTitle: 'ดีลพิเศษ 10 วัน คุ้มค่า x2 ประกันภัยเดินทางต่างประเทศ แบบรายปี',
-      description: 'เพียงทำประกันภัยการเดินทางต่างประเทศ แบบรายปี ครบธรรมใหม่ ผ่านเว็บไซต์ รับส่วนลดทันที 15% เมื่อใส่โค้ด CTA24',
-      discount: '15%',
-      couponCode: 'CTA24',
-      validUntil: 'วันนี้ - 31 มีนาคม 2568',
-      image: '/src/assets/img/promotion/promotion2.png',
-      bgColor: '#75c5e4',
-    },
-    {
-      id: 4,
-      title: 'ดีลพิเศษ คุ้มค่า x2',
-      subTitle: 'ดีลพิเศษ 10 วัน คุ้มค่า x2 ประกันภัยเดินทางต่างประเทศ แบบรายปี',
-      description: 'เพียงทำประกันภัยการเดินทางต่างประเทศ รับสิทธิพิเศษเพิ่มเติมสำหรับผู้ถือบัตรเครดิตพาร์ทเนอร์ กรุณาตรวจสอบเงื่อนไขเพิ่มเติมบนเว็บไซต์',
-      discount: '15%',
-      couponCode: 'CTA24',
-      validUntil: 'วันนี้ - 31 มีนาคม 2568',
-      image: '/src/assets/img/promotion/promotion1.png',
-      bgColor: '#75c5e4',
-    },
-    {
-      id: 5,
-      title: 'ดีลพิเศษ คุ้มค่า x2',
-      subTitle: 'ดีลพิเศษ 10 วัน คุ้มค่า x2 ประกันภัยเดินทางต่างประเทศ แบบรายปี',
-      description: 'เพียงทำประกันภัยการเดินทางต่างประเทศ แบบรายปี ครบธรรมใหม่ ผ่านเว็บไซต์ รับส่วนลดทันที 15% เมื่อใส่โค้ด CTA24',
-      discount: '15%',
-      couponCode: 'CTA24',
-      validUntil: 'วันนี้ - 31 มีนาคม 2568',
-      image: '/src/assets/img/promotion/promotion2.png',
-      bgColor: '#75c5e4',
-    }
-  ];
+  // Fetch promotion data from API
+  useEffect(() => {
+    const fetchPromotions = async () => {
+      try {
+        setLoading(true);
+        const data = await promotionService.getAllPromotions();
+        
+        // Map backend data to match the PromoData interface format
+        const formattedData: PromoData[] = data.map(item => ({
+          id: item.id,
+          title: item.title,
+          subTitle: item.titleEn || '',
+          description: item.descriptionEn || item.descriptionTh || '',
+          discount: '', // Not in backend, set empty
+          couponCode: '', // Not in backend, set empty
+          validUntil: `วันนี้ - ${new Date(item.effectiveTo).toLocaleDateString('th-TH', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+          })}`,
+          // Set correct image path using attachments endpoint
+          image: `${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/attachments/${item.coverImageUrl}`,
+          bgColor: '#a8bbd6', // Default background color
+          titleTh: item.titleTh,
+          titleEn: item.titleEn,
+          descriptionTh: item.descriptionTh,
+          descriptionEn: item.descriptionEn,
+          coverImageUrl: item.coverImageUrl,
+          status: item.status
+        }));
+        
+        console.log('Formatted promotion data:', formattedData);
+        setPromotions(formattedData);
+        setError(null);
+      } catch (err: any) {
+        console.error('Failed to fetch promotions:', err);
+        setError('Failed to load promotions');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPromotions();
+  }, []);
 
   // Use for manual scrolling
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -292,6 +299,58 @@ export const Promotion: React.FC = () => {
     });
   };
 
+  // Render loading state
+  if (loading) {
+    return (
+      <div>
+        <Box sx={{
+          width:'100%',
+          py: 2,
+          height: { xs: 'auto', md: '550px' },
+          minHeight: '550px',
+          bgcolor:'#E5EBF5',
+          mt:'100px',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}>
+          <CircularProgress sx={{ color: '#0f0b75' }} />
+        </Box>
+      </div>
+    );
+  }
+
+  // Render error state
+  if (error) {
+    return (
+      <div>
+        <Box sx={{
+          width:'100%',
+          py: 2,
+          height: { xs: 'auto', md: '550px' },
+          minHeight: '550px',
+          bgcolor:'#E5EBF5',
+          mt:'100px',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          flexDirection: 'column'
+        }}>
+          <Typography variant="h6" sx={{ color: '#d32f2f', mb: 2 }}>
+            {error}
+          </Typography>
+          <Button 
+            variant="contained" 
+            onClick={() => window.location.reload()}
+            sx={{ bgcolor: '#0f0b75' }}
+          >
+            Try Again
+          </Button>
+        </Box>
+      </div>
+    );
+  }
+
   return (
     <div>
       <Box sx={{
@@ -328,6 +387,8 @@ export const Promotion: React.FC = () => {
               โปรโมชัน
             </Typography>
             <Typography 
+              component={Link}
+              to="/promotions"
               sx={{ 
                 color: 'black', 
                 fontWeight: 'medium',
