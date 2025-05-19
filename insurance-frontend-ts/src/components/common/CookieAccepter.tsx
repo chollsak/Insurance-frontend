@@ -1,26 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Typography, Button } from '@mui/material';
 
-export const Footer = () => {
+export const CookieAccepter = () => {
   const [showCookieConsent, setShowCookieConsent] = useState(true);
   // State for window width monitoring
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  
+
   // Check window width on component mount and when window resize events occur
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
     };
-    
+
     // Initial check
     handleResize();
-    
+
     // Listen for resize events
     window.addEventListener('resize', handleResize);
-    
+
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-  
+
   // Use the 1450px breakpoint
   const useSmallFont = windowWidth <= 1450;
 
@@ -52,22 +52,23 @@ export const Footer = () => {
         flexDirection: { xs: 'column', md: 'row' },
         alignItems: { xs: 'flex-start', md: 'center' },
         justifyContent: 'space-between',
+        height: "135px"
       }}
     >
       <Box sx={{ flex: 1 }}>
-        <Typography 
-          fontSize={useSmallFont ? '22px' : '24px'} 
-          sx={{ fontWeight: 'bold'}}
+        <Typography
+          fontSize={useSmallFont ? '22px' : '24px'}
+          sx={{ fontWeight: 'bold' }}
         >
           เว็บไซต์นี้มีการจัดเก็บคุกกี้ (Cookies)
         </Typography>
-        <Typography 
-          fontSize={useSmallFont ? '16px' : '18px'} 
-          sx={{mb:-0.5}}
+        <Typography
+          fontSize={useSmallFont ? '16px' : '18px'}
+          sx={{ mb: -0.5 }}
         >
           เพื่อพัฒนาปรับปรุงการนำเสนอเนื้อหาที่ดีสำหรับผู้ใช้งาน และอำนวยความสะดวกให้ผู้ใช้งานสามารถใช้บริการต่างๆ ภายในเว็บไซต์ได้ง่ายและมีประสิทธิภาพยิ่งขึ้น
         </Typography>
-        <Typography 
+        <Typography
           fontSize={useSmallFont ? '16px' : '18px'}
         >
           ท่านสามารถศึกษารายละเอียดคุกกี้ได้ที่{' '}
