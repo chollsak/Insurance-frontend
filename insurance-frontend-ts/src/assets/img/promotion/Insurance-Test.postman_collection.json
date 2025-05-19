@@ -1,0 +1,665 @@
+{
+	"info": {
+		"_postman_id": "41d9db67-7855-4b88-beee-c1d8d0e05a2e",
+		"name": "Insurance-Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "31286494"
+	},
+	"item": [
+		{
+			"name": "Suit-Insurance",
+			"item": [
+				{
+					"name": "Create Suit Insurance",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "titleTh",
+									"value": "มนุษเงินเดือน",
+									"type": "text"
+								},
+								{
+									"key": "titleEn",
+									"value": "salary man",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/Nicharat/Downloads/athlete.jpg"
+								},
+								{
+									"key": "title",
+									"value": "salary man",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "ACTIVE",
+									"type": "text"
+								},
+								{
+									"key": "effectiveFrom",
+									"value": "2025-05-13T15:31:00",
+									"type": "text"
+								},
+								{
+									"key": "effectiveTo",
+									"value": "2025-05-30T17:50:00",
+									"type": "text"
+								}
+							]
+						},
+						"url": "localhost:8080/api/suit-insurances"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Suit Insurance",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "titleTh",
+									"value": "ดีครับ",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "titleEn",
+									"value": "hii",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "descriptionTh",
+									"value": "ทดสอบ",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "descriptionEn",
+									"value": "test",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/Nicharat/Downloads/อาราเล่.jpg",
+									"disabled": true
+								},
+								{
+									"key": "coverImage",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								},
+								{
+									"key": "title",
+									"value": "my new title for suit insurance content",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "effectiveFrom",
+									"value": "2025-05-13T15:25:00",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "ACTIVE",
+									"type": "text"
+								}
+							]
+						},
+						"url": "localhost:8080/api/suit-insurances/ff3127ad-ec1d-4776-9622-8ac3d9cb696b"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Insurances",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:8080/api/suit-insurances"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Suit Insurances By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:8080/api/suit-insurances/ff3127ad-ec1d-4776-9622-8ac3d9cb696b"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Suit Insurances By ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "localhost:8080/api/suit-insurances/7d0199da-b1b7-4db7-a4f8-d92f052044b3"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Banner",
+			"item": [
+				{
+					"name": "Create New Banner",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "coverImage",
+									"type": "file",
+									"src": "postman-cloud:///1efc6232-db2c-43e0-a881-c5b593629755"
+								},
+								{
+									"key": "coverHyperLink",
+									"value": "https://github.com/chollsak/Insurance-frontend",
+									"type": "text"
+								},
+								{
+									"key": "contents[0].contentImage",
+									"type": "file",
+									"src": "postman-cloud:///1efc624f-7408-4de0-9c6a-55eddb88b2ec"
+								},
+								{
+									"key": "contents[0].contentHyperLink",
+									"value": "https://youtu.be/Of562qJlZZ8?si=FDPx6PI_82YF2671",
+									"type": "text"
+								},
+								{
+									"key": "contents[1].contentImage",
+									"type": "file",
+									"src": "postman-cloud:///1efc625b-fa25-4070-b9a6-75b007069f41"
+								},
+								{
+									"key": "contents[1].contentHyperLink",
+									"value": "https://youtu.be/Of562qJlZZ8?si=FDPx6PI_82YF2671",
+									"type": "text"
+								},
+								{
+									"key": "effectiveFrom",
+									"value": "2025-05-13T15:40:00",
+									"type": "text"
+								},
+								{
+									"key": "effectiveTo",
+									"value": "2025-05-15T17:50:00",
+									"type": "text"
+								},
+								{
+									"key": "title",
+									"value": "my first banner",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "ACTIVE",
+									"type": "text"
+								},
+								{
+									"key": "contents[2].contentImage",
+									"type": "file",
+									"src": "postman-cloud:///1efc624f-7408-4de0-9c6a-55eddb88b2ec"
+								},
+								{
+									"key": "contents[2].contentHyperLink",
+									"value": "https://www.google.com",
+									"type": "text"
+								},
+								{
+									"key": "contents[3].contentImage",
+									"type": "file",
+									"src": "postman-cloud:///1efc624f-7408-4de0-9c6a-55eddb88b2ec"
+								},
+								{
+									"key": "contents[3].contentHyperLink",
+									"value": "https://github.com/ppondeu",
+									"type": "text"
+								}
+							]
+						},
+						"url": "localhost:8080/api/banners"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Banner",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:8080/api/banners"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Banner By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:8080/api/banners/f7d0931c-d6e7-4954-bd2a-cb003b7e08b0"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Banner By ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "localhost:8080/api/banners/5a4e7188-3ec1-41ae-9fc8-6b37ba3b07f1"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Banner",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "status",
+									"value": "ACTIVE",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "contentRemoves",
+									"value": "67a190b7-aee1-47ca-963b-2bfbfa543b1d",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "contentCreates[0].contentImage",
+									"type": "file",
+									"src": "postman-cloud:///1efc6232-db2c-43e0-a881-c5b593629755",
+									"disabled": true
+								},
+								{
+									"key": "contentCreates[0].contentHyperLink",
+									"value": "https://www.youtube.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "contentUpdates[0].contentImage",
+									"type": "file",
+									"src": "postman-cloud:///1efc6242-3964-4e30-8165-6138dc9c0dcb"
+								},
+								{
+									"key": "contentUpdates[0].contentHyperLink",
+									"value": "https://www.monday.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "contentUpdates[0].id",
+									"value": "81c93b02-194f-4de2-b14f-aa3114d7b1d1",
+									"type": "text"
+								},
+								{
+									"key": "title",
+									"value": "โชว์ประกัน",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": "localhost:8080/api/banners/4b417023-9a59-4a1d-b2df-df5d1ae447c5"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Insurance",
+			"item": [
+				{
+					"name": "Get All Insurance",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:8080/api/insurances"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Insurance By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:8080/api/insurances/bef984ae-a36e-4837-9dde-7d8de4c63647"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Insurance",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "titleTh",
+									"value": "ประกันภัยรถยนต์",
+									"type": "text"
+								},
+								{
+									"key": "titleEn",
+									"value": "Car Insurance",
+									"type": "text"
+								},
+								{
+									"key": "descriptionTh",
+									"value": "อุ่นใจในทุกเส้นทาง เพราะมีเราเคียงข้าง 24 ชั่วโมง",
+									"type": "text"
+								},
+								{
+									"key": "descriptionEn",
+									"value": "Feel secure on every route because we are with you 24 hours a day.",
+									"type": "text"
+								},
+								{
+									"key": "iconImage",
+									"type": "file",
+									"src": "/C:/Users/Nicharat/Downloads/car-icon.png"
+								},
+								{
+									"key": "coverImage",
+									"type": "file",
+									"src": "/C:/Users/Nicharat/Downloads/car-cover.png"
+								},
+								{
+									"key": "title",
+									"value": "ประกันภัยรถยนต์",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "INACTIVE",
+									"type": "text"
+								},
+								{
+									"key": "effectiveFrom",
+									"value": "2025-05-13T14:50:00",
+									"type": "text"
+								},
+								{
+									"key": "effectiveTo",
+									"value": "2025-05-15T17:50:00",
+									"type": "text"
+								}
+							]
+						},
+						"url": "localhost:8080/api/insurances"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Insurance By ID",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "titleTh",
+									"value": "wdk",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "titleEn",
+									"value": "waddekrub",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "descriptionTh",
+									"value": "ทดสอบ",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "descriptionEn",
+									"value": "test",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "iconImage",
+									"type": "file",
+									"src": "postman-cloud:///1efc624f-7408-4de0-9c6a-55eddb88b2ec",
+									"disabled": true
+								},
+								{
+									"key": "coverImage",
+									"type": "file",
+									"src": "/C:/Users/Nicharat/Downloads/the_shark.jpg",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "ACTIVE",
+									"type": "text"
+								},
+								{
+									"key": "effectiveFrom",
+									"value": "2025-05-30T17:40:00",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "effectiveTo",
+									"value": "2025-05-30T17:50:00",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "title",
+									"value": "test insurance bki ประกันภัย",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": "localhost:8080/api/insurances/bea8f277-e9f5-4c2e-807a-115d7ea877ce"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Insurance By ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "localhost:8080/api/insurances/8e8a1a6f-79c4-41e1-97fb-5cc4f84f2269"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Content",
+			"item": [
+				{
+					"name": "Get All Contents",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/contents?category=",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"contents"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Promotion",
+			"item": [
+				{
+					"name": "Get All Promotion",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:8080/api/promotions"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Promotion By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:8080/api/promotions/1ac25843-5fff-47dd-be8e-8ce94f5c1208"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Promotion",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Summer Special Promotion 2.0",
+									"type": "text"
+								},
+								{
+									"key": "effectiveFrom",
+									"value": "2025-05-01T00:00:00",
+									"type": "text"
+								},
+								{
+									"key": "effectiveTo",
+									"value": "2025-09-30T23:59:59",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "ACTIVE",
+									"type": "text"
+								},
+								{
+									"key": "titleTh",
+									"value": "โปรโมชั่นพิเศษฤดูร้อน",
+									"type": "text"
+								},
+								{
+									"key": "titleEn",
+									"value": "Summer Special Promotion 2",
+									"type": "text"
+								},
+								{
+									"key": "descriptionTh",
+									"value": "รับส่วนลดพิเศษสำหรับการซื้อประกันในช่วงฤดูร้อน",
+									"type": "text"
+								},
+								{
+									"key": "descriptionEn",
+									"value": "Special discounts for insurance purchases during summer",
+									"type": "text"
+								},
+								{
+									"key": "startDate",
+									"value": "2025-05-15T00:00:00",
+									"type": "text"
+								},
+								{
+									"key": "endDate",
+									"value": "2025-08-31T23:59:59",
+									"type": "text"
+								},
+								{
+									"key": "coverImage",
+									"type": "file",
+									"src": "/Users/chollsak/Documents/Github/Insurance-frontend/insurance-frontend-ts/src/assets/img/promotion/promotion2.png"
+								}
+							]
+						},
+						"url": "localhost:8080/api/promotions"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Promotion",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Updated Summer Promotion",
+									"type": "text"
+								}
+							]
+						},
+						"url": "localhost:8080/api/promotions/1ac25843-5fff-47dd-be8e-8ce94f5c1208"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete By Id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "localhost:8080/api/promotions/1ac25843-5fff-47dd-be8e-8ce94f5c1208"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
