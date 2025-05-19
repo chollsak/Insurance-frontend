@@ -2,7 +2,7 @@
 import apiClient from '../config/apiClient';
 import { Promotion, PromoData, PromotionListResponse, PromotionResponse } from '../types/promotions';
 
-const BASE_PATH = '/api/promotions';
+const BASE_PATH = '/promotions';
 
 // Function to transform backend response to your frontend model
 const transformBackendToFrontend = (backendPromo: Promotion): PromoData => {
@@ -35,19 +35,5 @@ export const promotionService = {
       throw error;
     }
   },
-  
-  /**
-   * Get promotion by ID
-   * @param id - Promotion ID
-   * @returns Promise with a single promotion formatted for the frontend
-   */
-  getPromotionById: async (id: string): Promise<PromoData> => {
-    try {
-      const response = await apiClient.get<PromotionResponse>(`${BASE_PATH}/${id}`);
-      return transformBackendToFrontend(response.data.data);
-    } catch (error) {
-      console.error(`Error fetching promotion with id ${id}:`, error);
-      throw error;
-    }
-  }
+
 };

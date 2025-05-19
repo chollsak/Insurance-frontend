@@ -9,9 +9,9 @@ import { Button, CircularProgress } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { promotionService } from '../../api/services/promotionService';
 
-// Keep your original PromoData interface
+
 interface PromoData {
-  id: string;  // Changed from number to string to match backend
+  id: string;  
   title: string;
   subTitle: string;
   description: string;
@@ -22,7 +22,6 @@ interface PromoData {
   bgColor: string;
   giftImage?: string;
   giftText?: string;
-  // Additional fields from backend (optional for backward compatibility)
   titleTh?: string;
   titleEn?: string;
   descriptionTh?: string;
@@ -51,7 +50,6 @@ export const PromotionCard: React.FC<PromotionCardProps> = ({ promo, useSmallFon
         flexDirection: 'column',
       }}
     >
-      {/* Card image at the top - fixed height */}
       <Box
         sx={{
           bgcolor: promo.bgColor,
@@ -82,7 +80,6 @@ export const PromotionCard: React.FC<PromotionCardProps> = ({ promo, useSmallFon
         />
       </Box>
 
-      {/* Card content section - can grow if content is long */}
       <Box
         sx={{
           p: 2,
@@ -159,15 +156,13 @@ export const PromotionCard: React.FC<PromotionCardProps> = ({ promo, useSmallFon
 };
 
 export const Promotion: React.FC = () => {
-  // State for promotions data
+
   const [promotions, setPromotions] = useState<PromoData[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   
-  // State for window width monitoring
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   
-  // Check window width on component mount and when window resize events occur
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
@@ -182,7 +177,6 @@ export const Promotion: React.FC = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
   
-  // Updated breakpoint to 1450px as requested
   const useSmallFont = windowWidth <= 1450;
   
   // Fetch promotion data from API
@@ -198,8 +192,8 @@ export const Promotion: React.FC = () => {
           title: item.title,
           subTitle: item.titleEn || '',
           description: item.descriptionEn || item.descriptionTh || '',
-          discount: '', // Not in backend, set empty
-          couponCode: '', // Not in backend, set empty
+          discount: '', 
+          couponCode: '', 
           validUntil: `วันนี้ - ${new Date(item.effectiveTo).toLocaleDateString('th-TH', {
             day: 'numeric',
             month: 'long',
@@ -207,7 +201,7 @@ export const Promotion: React.FC = () => {
           })}`,
           // Set correct image path using attachments endpoint
           image: `${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/attachments/${item.coverImageUrl}`,
-          bgColor: '#a8bbd6', // Default background color
+          bgColor: '#a8bbd6', 
           titleTh: item.titleTh,
           titleEn: item.titleEn,
           descriptionTh: item.descriptionTh,
@@ -230,7 +224,6 @@ export const Promotion: React.FC = () => {
     fetchPromotions();
   }, []);
 
-  // Use for manual scrolling
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
@@ -238,10 +231,8 @@ export const Promotion: React.FC = () => {
   const [showLeftShadow, setShowLeftShadow] = useState(false);
   const [showRightShadow, setShowRightShadow] = useState(true);
   
-  // State for mobile view
   const [mobileCurrentIndex, setMobileCurrentIndex] = useState(0);
 
-  // Handle manual scrolling
   const handleMouseDown = (e: React.MouseEvent) => {
     if (!scrollContainerRef.current) return;
     setIsDragging(true);
@@ -261,16 +252,13 @@ export const Promotion: React.FC = () => {
     scrollContainerRef.current.scrollLeft = scrollLeft - walk;
   };
 
-  // Check scroll position to show/hide shadows
   const handleScroll = () => {
     if (!scrollContainerRef.current) return;
     
     const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
     
-    // Show left shadow if scrolled right
     setShowLeftShadow(scrollLeft > 0);
     
-    // Show right shadow if not at the end
     setShowRightShadow(scrollLeft < scrollWidth - clientWidth - 10);
   };
 
@@ -282,11 +270,10 @@ export const Promotion: React.FC = () => {
     }
   }, []);
 
-  // For button navigation
   const handlePrev = (): void => {
     if (!scrollContainerRef.current) return;
     scrollContainerRef.current.scrollBy({
-      left: -430, // Width of a card
+      left: -430, 
       behavior: 'smooth'
     });
   };
@@ -294,12 +281,11 @@ export const Promotion: React.FC = () => {
   const handleNext = (): void => {
     if (!scrollContainerRef.current) return;
     scrollContainerRef.current.scrollBy({
-      left: 430, // Width of a card
+      left: 430,
       behavior: 'smooth'
     });
   };
 
-  // Render loading state
   if (loading) {
     return (
       <div>
@@ -320,7 +306,6 @@ export const Promotion: React.FC = () => {
     );
   }
 
-  // Render error state
   if (error) {
     return (
       <div>

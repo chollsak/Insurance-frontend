@@ -1,7 +1,7 @@
 // src/api/config/apiClient.ts
 import axios from 'axios';
 
-const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080';
+const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080/api';
 
 console.log('API Client initialized with BASE_URL:', BASE_URL);
 
