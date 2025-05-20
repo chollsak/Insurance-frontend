@@ -1,4 +1,3 @@
-// src/api/config/apiClient.ts
 import axios from 'axios';
 
 const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080/api';
@@ -39,7 +38,6 @@ apiClient.interceptors.response.use(
     console.error('❌ Response Error:', error.message);
     
     if (error.response) {
-      // The server responded with a status code outside the 2xx range
       console.error('Response details:', {
         status: error.response.status,
         statusText: error.response.statusText,
@@ -47,7 +45,6 @@ apiClient.interceptors.response.use(
         headers: error.response.headers
       });
     } else if (error.request) {
-      // The request was made but no response was received
       console.error('No response received:', error.request);
     }
     
