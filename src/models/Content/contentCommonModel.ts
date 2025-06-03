@@ -1,3 +1,4 @@
+import { ContentCategory } from "./contentCategory";
 import { ContentStatus } from "./contentStatus";
 
 export interface ContentCommonModel {
@@ -6,4 +7,5 @@ export interface ContentCommonModel {
     effectiveFrom: string;
     effectiveTo: string;
     status: ContentStatus;
+    category: ContentCategory;
 }

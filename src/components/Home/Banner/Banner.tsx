@@ -8,6 +8,7 @@ const fallBackBanner: BannerModel = {
   id: "00000000-1111-2222-3333-444444444444",
   title: "กรุงเทพประกันภัย",
   status: "ACTIVE",
+  category: "BANNER",
   effectiveFrom: "2025-06-02T00:00:00",
   effectiveTo: "2025-07-03T00:00:00",
   coverImagePath: "/src/assets/img/banner/bg.png",

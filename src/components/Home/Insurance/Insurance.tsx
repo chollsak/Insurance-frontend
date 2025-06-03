@@ -12,6 +12,7 @@ const fallBackInsurances: InsuranceModel[] = [
     effectiveFrom: "2025-06-02T00:00:00",
     effectiveTo: "2025-07-03T00:00:00",
     status: "ACTIVE",
+    category: "INSURANCE",
     titleTh: "ประกันภัยรถยนต์",
     titleEn: "Car Insurance",
     descriptionTh: "อุ่นใจในทุกเส้นทาง เพราะมีเราเคียงข้าง 24 ชั่วโมง",
@@ -28,6 +29,7 @@ const fallBackInsurances: InsuranceModel[] = [
     effectiveFrom: "2025-06-02T00:00:00",
     effectiveTo: "2025-07-03T00:00:00",
     status: "ACTIVE",
+    category: "INSURANCE",
     titleTh: "ประกันภัยการเดินทาง",
     titleEn: "Travel Insurance",
     descriptionTh: "สำหรับนักเดินทางทั้งในประเทศและต่างประเทศ สามารถเลือกแพ็คเกจได้ตามที่ต้องการ",
@@ -44,6 +46,7 @@ const fallBackInsurances: InsuranceModel[] = [
     effectiveFrom: "2025-06-02T00:00:00",
     effectiveTo: "2025-07-03T00:00:00",
     status: "ACTIVE",
+    category: "INSURANCE",
     titleTh: "ประกันภัยอุบัติเหตุ",
     titleEn: "Accident Insurance",
     descriptionTh: "คุ้มครองทุกวัดและชีวิต ทั้งในเมืองไทย อุ่นใจได้เสมอ",
@@ -60,6 +63,7 @@ const fallBackInsurances: InsuranceModel[] = [
     effectiveFrom: "2025-06-02T00:00:00",
     effectiveTo: "2025-07-03T00:00:00",
     status: "ACTIVE",
+    category: "INSURANCE",
     titleTh: "ประกันภัยสุขภาพ",
     titleEn: "Health Insurance",
     descriptionTh: "สบายใจเมื่อมีประกันภัยสุขภาพ หมดห่วงเรื่องค่ารักษาพยาบาล",
@@ -71,6 +75,7 @@ const fallBackInsurances: InsuranceModel[] = [
     deletedAt: null
   }
 ]
+
 export function Insurance() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const { data, isLoading } = useInsurancesQuery();
@@ -102,8 +107,7 @@ export function Insurance() {
           my: useSmallFont ? 2.5 : 3,
           ml: useSmallFont ? 16 : 20,
           textAlign: "start"
-        }}
-      >
+        }}>
         ประกันภัยทั้งหมด
       </Typography>
 
@@ -159,8 +163,7 @@ export function Insurance() {
                     }}
                     onError={(_e) => {
                       console.error(`Error loading cover image for ${insurance.title}`);
-                    }}
-                  />
+                    }} />
 
                   <Box
                     sx={{
@@ -176,8 +179,7 @@ export function Insurance() {
                       justifyContent: "center",
                       border: "1px solid #F3F3F5",
                       padding: "8px"
-                    }}
-                  >
+                    }}>
                     <Box
                       component="img"
                       src={true ? getImageUrl(insurance.coverImagePath)! : "test"}
@@ -191,8 +193,7 @@ export function Insurance() {
                       }}
                       onError={(_e) => {
                         console.error(`Error loading icon image for ${insurance.title}`);
-                      }}
-                    />
+                      }} />
                   </Box>
                 </Box>
 
@@ -204,8 +205,7 @@ export function Insurance() {
                       color: "black",
                       mb: 1.5,
                       lineHeight: 1
-                    }}
-                  >
+                    }}>
                     {insurance.titleTh || insurance.title}
                   </Typography>
                   <Typography
@@ -213,8 +213,7 @@ export function Insurance() {
                       fontSize: useSmallFont ? "16px" : "18px",
                       color: "#3E4767",
                       lineHeight: 1
-                    }}
-                  >
+                    }}>
                     {insurance.descriptionTh || insurance.descriptionEn}
                   </Typography>
                 </Box>

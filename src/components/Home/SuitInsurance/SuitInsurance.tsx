@@ -9,9 +9,10 @@ const fallBackSuitInsuranceList: SuitInsuranceModel[] = [
   {
     id: "1",
     title: "นักกีฬา",
-    effectiveFrom: "",
-    effectiveTo: "",
+    effectiveFrom: "2025-06-02T00:00:00",
+    effectiveTo: "2025-07-03T00:00:00",
     status: "ACTIVE",
+    category: "SUIT_INSURANCE",
     titleTh: "นักกีฬา",
     titleEn: "Sports",
     imagePath: "/src/assets/img/suitInsurance/sports.png"
@@ -19,9 +20,10 @@ const fallBackSuitInsuranceList: SuitInsuranceModel[] = [
   {
     id: "2",
     title: "วัยทำงาน",
-    effectiveFrom: "",
-    effectiveTo: "",
+    effectiveFrom: "2025-06-02T00:00:00",
+    effectiveTo: "2025-07-03T00:00:00",
     status: "ACTIVE",
+    category: "SUIT_INSURANCE",
     titleTh: "วัยทำงาน",
     titleEn: "Work",
     imagePath: "/src/assets/img/suitInsurance/work.png"
@@ -29,9 +31,10 @@ const fallBackSuitInsuranceList: SuitInsuranceModel[] = [
   {
     id: "3",
     title: "คนรักบ้าน",
-    effectiveFrom: "",
-    effectiveTo: "",
+    effectiveFrom: "2025-06-02T00:00:00",
+    effectiveTo: "2025-07-03T00:00:00",
     status: "ACTIVE",
+    category: "SUIT_INSURANCE",
     titleTh: "คนรักบ้าน",
     titleEn: "Home",
     imagePath: "/src/assets/img/suitInsurance/home.png"
@@ -39,9 +42,10 @@ const fallBackSuitInsuranceList: SuitInsuranceModel[] = [
   {
     id: "4",
     title: "คนรักครอบครัว",
-    effectiveFrom: "",
-    effectiveTo: "",
+    effectiveFrom: "2025-06-02T00:00:00",
+    effectiveTo: "2025-07-03T00:00:00",
     status: "ACTIVE",
+    category: "SUIT_INSURANCE",
     titleTh: "คนรักครอบครัว",
     titleEn: "Family",
     imagePath: "/src/assets/img/suitInsurance/family.png"
@@ -49,9 +53,10 @@ const fallBackSuitInsuranceList: SuitInsuranceModel[] = [
   {
     id: "5",
     title: "อยากสุขภาพดี",
-    effectiveFrom: "",
-    effectiveTo: "",
+    effectiveFrom: "2025-06-02T00:00:00",
+    effectiveTo: "2025-07-03T00:00:00",
     status: "ACTIVE",
+    category: "SUIT_INSURANCE",
     titleTh: "อยากสุขภาพดี",
     titleEn: "Health",
     imagePath: "/src/assets/img/suitInsurance/health.png"
@@ -59,9 +64,10 @@ const fallBackSuitInsuranceList: SuitInsuranceModel[] = [
   {
     id: "6",
     title: "นักเดินทาง",
-    effectiveFrom: "",
-    effectiveTo: "",
+    effectiveFrom: "2025-06-02T00:00:00",
+    effectiveTo: "2025-07-03T00:00:00",
     status: "ACTIVE",
+    category: "SUIT_INSURANCE",
     titleTh: "นักเดินทาง",
     titleEn: "Travel",
     imagePath: "/src/assets/img/suitInsurance/travel.png"
@@ -80,10 +86,8 @@ export function SuitInsurance() {
       setWindowWidth(window.innerWidth);
     };
 
-    // Initial check
     handleResize();
 
-    // Listen for resize events
     window.addEventListener("resize", handleResize);
 
     return () => window.removeEventListener("resize", handleResize);
@@ -100,8 +104,7 @@ export function SuitInsurance() {
           px: { xs: 2, md: useSmallFont ? 8 : 10 },
           position: "relative",
           zIndex: 1
-        }}
-      >
+        }}>
         <Typography
           fontSize={useSmallFont ? 30 : 32}
           sx={{
@@ -110,8 +113,7 @@ export function SuitInsurance() {
             mb: useSmallFont ? 2.5 : 3,
             ml: useSmallFont ? 8 : 10,
             textAlign: "start"
-          }}
-        >
+          }}>
           ประกันภัยที่เหมาะกับคุณ
         </Typography>
 
@@ -152,8 +154,7 @@ export function SuitInsurance() {
                     display: "flex",
                     flexDirection: "column",
                     backgroundColor: "transparent"
-                  }}
-                >
+                  }}>
                   <Box
                     sx={{
                       width: "100%",
@@ -161,8 +162,7 @@ export function SuitInsurance() {
                       position: "relative",
                       overflow: "hidden",
                       borderRadius: "16px"
-                    }}
-                  >
+                    }}>
                     <Box
                       component="img"
                       src={isSuitInsurancesExists ? getImageUrl(suitInsurance.imagePath)! : suitInsurance.imagePath}
@@ -180,8 +180,6 @@ export function SuitInsurance() {
                       }}
                       onError={(_e) => {
                         console.error(`Error loading image for ${suitInsurance.title}:`, suitInsurance.imagePath);
-                        // Fallback to static images if API images fail
-                        // e.currentTarget.src = `/src/assets/img/suitInsurance/${suitInsurance.titleEn?.toLowerCase() || "default"}.png`;
                       }}
                     />
                   </Box>
@@ -192,8 +190,7 @@ export function SuitInsurance() {
                       mt: 0.5,
                       fontWeight: "thin",
                       color: "#14284B"
-                    }}
-                  >
+                    }}>
                     {suitInsurance.titleTh || suitInsurance.title}
                   </Typography>
                 </Paper>
