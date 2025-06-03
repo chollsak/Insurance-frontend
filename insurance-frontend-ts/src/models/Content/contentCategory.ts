@@ -1,0 +1,1 @@
+export type ContentCategory = "BANNER" | "PROMOTION" | "INSURANCE" | "SUIT_INSURANCE";
