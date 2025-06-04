@@ -156,7 +156,7 @@ export function Insurance() {
                     alt={insurance.title}
                     draggable={false}
                     sx={{
-                      width: useSmallFont ? "260px" : "270px",
+                      width: useSmallFont ? "260px" : "350px",
                       height: useSmallFont ? "155px" : "160px",
                       objectFit: "cover",
                       userSelect: "none",
