@@ -43,8 +43,8 @@ export function Banner() {
   const cardWidth = windowWidth <= 1450 ? 300 : 350;
   const gap = windowWidth <= 1450 ? 16 : 24;
   const { data, isLoading } = useBannersQuery();
-  const banner = data?.data?.[0] ?? fallBackBanner;
-  const isBannerExists = banner.id !== "00000000-1111-2222-3333-444444444444";
+  const isBannerExists = data && data?.data && data?.data?.length > 0;
+  const banner = isBannerExists ? data.data?.[data.data?.length - 1]! : fallBackBanner;
   const bannerImages = banner.contents.map(b => isBannerExists ? getImageUrl(b.contentImagePath)! : b.contentImagePath);
   const backgroundImage = isBannerExists ? getImageUrl(banner.coverImagePath)! : banner.coverImagePath;
 
