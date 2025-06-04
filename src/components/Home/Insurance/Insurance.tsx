@@ -182,7 +182,7 @@ export function Insurance() {
                     }}>
                     <Box
                       component="img"
-                      src={true ? getImageUrl(insurance.coverImagePath)! : "test"}
+                      src={true ? getImageUrl(insurance.iconImagePath)! : "test"}
                       alt="Icon"
                       draggable={false}
                       sx={{
