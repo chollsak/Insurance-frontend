@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { promotionService } from "../../services";
+import { promotionService } from "../../../services";
 
 export const usePromotionsQuery = () => {
     return useQuery({

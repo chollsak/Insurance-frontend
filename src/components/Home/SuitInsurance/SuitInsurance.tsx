@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import { Box, Typography, Paper, Stack } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
-import { useSuitInsurancesQuery } from "../../../hooks";
 import { getImageUrl } from "../../../utils";
-import { SuitInsuranceModel } from "../../../models";
+import { SuitInsuranceListResponse, SuitInsuranceModel } from "../../../models";
 
 const fallBackSuitInsuranceList: SuitInsuranceModel[] = [
   {
@@ -74,10 +73,14 @@ const fallBackSuitInsuranceList: SuitInsuranceModel[] = [
   }
 ]
 
-export function SuitInsurance() {
+interface ISuitInsuranceProps {
+  data?: SuitInsuranceListResponse;
+  isLoading: boolean;
+}
+
+export function SuitInsurance({ data, isLoading }: ISuitInsuranceProps) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-  const { data, isLoading } = useSuitInsurancesQuery();
   const isSuitInsurancesExists = data?.data && data?.data?.length > 0;
   const suitInsuranceList = isSuitInsurancesExists ? data?.data! : fallBackSuitInsuranceList;
 

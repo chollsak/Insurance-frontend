@@ -7,11 +7,14 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { Button, CircularProgress } from "@mui/material";
 import { Link } from "react-router-dom";
-import { usePromotionsQuery } from "../../../hooks";
 import { getImageUrl } from "../../../utils";
+import { PromotionListResponse } from "../../../models";
 
-export function Promotion() {
-  const { data, isLoading } = usePromotionsQuery();
+interface IPromotionProps {
+  data?: PromotionListResponse;
+  isLoading: boolean;
+}
+export function Promotion({data, isLoading}: IPromotionProps) {
   const promotionResponse = data?.data ?? [];
   const promotions: Promotion[] = promotionResponse.map(p => {
     return {

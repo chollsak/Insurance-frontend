@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import { Box, Typography } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
-import { useInsurancesQuery } from "../../../hooks";
 import { getImageUrl } from "../../../utils";
-import { InsuranceModel } from "../../../models";
+import { InsuranceListResponse, InsuranceModel } from "../../../models";
 
 const fallBackInsurances: InsuranceModel[] = [
   {
@@ -76,13 +75,17 @@ const fallBackInsurances: InsuranceModel[] = [
   }
 ]
 
-export function Insurance() {
+interface IInsuranceProps {
+  data?: InsuranceListResponse;
+  isLoading: boolean;
+}
+
+export function Insurance({ data, isLoading }: IInsuranceProps) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const { data, isLoading } = useInsurancesQuery();
+
   const isInsuranceExists = data?.data && data?.data?.length > 0;
   const insuranceList = isInsuranceExists ? data?.data! : fallBackInsurances;
-  console.log(data);
-  console.log("insurances", insuranceList);
+
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);

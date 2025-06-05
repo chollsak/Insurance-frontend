@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { suitInsuranceService } from "../../services";
+import { suitInsuranceService } from "../../../services";
 
 export const useSuitInsurancesQuery = () => {
     return useQuery({

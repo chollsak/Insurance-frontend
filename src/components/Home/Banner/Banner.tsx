@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Box, Typography, Button, CircularProgress } from "@mui/material";
-import { useBannersQuery } from "../../../hooks";
-import { BannerModel } from "../../../models";
+import { BannerListResponse, BannerModel } from "../../../models";
 import { getImageUrl } from "../../../utils";
 
 const fallBackBanner: BannerModel = {
@@ -37,12 +36,17 @@ const fallBackBanner: BannerModel = {
   ]
 }
 
-export function Banner() {
+interface IBannerProps {
+  data?: BannerListResponse;
+  isLoading: boolean;
+}
+
+export function Banner({ data, isLoading }: IBannerProps) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const scrollRef = useRef<HTMLDivElement>(null);
   const cardWidth = windowWidth <= 1450 ? 300 : 350;
   const gap = windowWidth <= 1450 ? 16 : 24;
-  const { data, isLoading } = useBannersQuery();
+
   const isBannerExists = data && data?.data && data?.data?.length > 0;
   const banner = isBannerExists ? data.data?.[data.data?.length - 1]! : fallBackBanner;
   const bannerImages = banner.contents.map(b => isBannerExists ? getImageUrl(b.contentImagePath)! : b.contentImagePath);

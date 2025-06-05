@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { bannerService } from "../../services";
+import { bannerService } from "../../../services";
 
 export const useBannersQuery = () => {
     return useQuery({
