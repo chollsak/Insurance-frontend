@@ -2,10 +2,10 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import theme from './theme';
-import Home from './screens/Home/HomeScreen';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ErrorBoundary } from 'react-error-boundary';
 import { ErrorDisplay } from './components';
+import { HomeScreen } from './screens';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -25,12 +25,12 @@ function App() {
         )}>
           <QueryClientProvider client={queryClient}>
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/" element={<HomeScreen />} />
             </Routes>
           </QueryClientProvider>
         </ErrorBoundary>
       </BrowserRouter>
-    </ThemeProvider >
+    </ThemeProvider>
   );
 }
 

@@ -15,29 +15,25 @@ export default function StyledErrorFallback({ error, resetErrorBoundary }: Fallb
         color: "text.primary",
         p: 3,
         textAlign: "center",
-      }}
-    >
-      <Box maxWidth={600}> {/* Wider for larger text */}
+      }}>
+      <Box maxWidth={600}>
         <Typography
-          variant="h2"  // larger heading variant
+          variant="h2"
           color="error.main"
           gutterBottom
-          sx={{ fontWeight: "bold" }}
-        >
+          sx={{ fontWeight: "bold" }}>
           Oops! Something went wrong.
         </Typography>
         <Typography
-          variant="h5"  // bigger body text
-          sx={{ mb: 4 }}
-        >
+          variant="h5"
+          sx={{ mb: 4 }}>
           {error?.message || "An unexpected error occurred."}
         </Typography>
         <Button
           variant="contained"
           color="error"
           size="large"
-          onClick={resetErrorBoundary}
-        >
+          onClick={resetErrorBoundary}>
           Try Again
         </Button>
       </Box>
