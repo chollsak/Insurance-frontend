@@ -1,45 +1,58 @@
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
-export  function ContactUs() {
+export function ContactUs() {
+    const { t } = useTranslation();
+
     return (
-        <Box sx={{
-            display: "flex",
-            gap: "20px",
-            alignItems: "center",
-            position: "fixed",
-            bottom: 20,
-            right: 20,
-            zIndex: 10,
-            userSelect: "none",
-        }}>
-            <Box sx={{
-                position: "relative",
+        <Box
+            sx={{
                 display: "flex",
-                justifyContent: "center",
+                gap: "20px",
                 alignItems: "center",
-                marginTop: "auto",
-                marginBottom: "8px",
+                position: "fixed",
+                bottom: 20,
+                right: 20,
+                zIndex: 10,
+                userSelect: "none",
             }}>
-                <Box
-                    component="img"
-                    src="/src/assets/img/contact/symbol.svg"
-                    alt="Symbol Image"
-                    draggable={false}
-                    sx={{
-                        position: "absolute",
-                        userSelect: "none",
-                    }}
-                />
-                <Typography sx={{
-                    fontWeight: "400",
-                    fontSize: "22px",
-                    lineHeight: "100%",
+            <Box
+                sx={{
                     position: "relative",
-                    pr: 1,
-                }}>
-                    คุยกับเรา
-                </Typography>
-            </Box>
+                    width: "24px",
+                    height: "24px",
+
+                    "&::before": {
+                        content: `"${t("home.contactAdmin.message")}"`,
+                        position: "absolute",
+                        right: "-50%",
+                        top: "50%",
+                        transform: "translateY(-50%)",
+                        backgroundColor: "#fff",
+                        color: "#05058C",
+                        padding: "6px 12px",
+                        borderRadius: "6px",
+                        fontSize: "22px",
+                        lineHeight: "100%",
+                        whiteSpace: "nowrap",
+                        marginRight: "8px",
+                        boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+                    },
+
+                    "&::after": {
+                        content: '""',
+                        position: "absolute",
+                        left: "100%",
+                        top: "50%",
+                        transform: "translateY(-50%)",
+                        width: 0,
+                        height: 0,
+                        borderTop: "6px solid transparent",
+                        borderBottom: "6px solid transparent",
+                        borderLeft: "16px solid #fff",
+                    },
+                }}
+            />
 
             <Box
                 component="img"
@@ -65,5 +78,5 @@ export  function ContactUs() {
                 }}
             />
         </Box>
-    )
+    );
 }

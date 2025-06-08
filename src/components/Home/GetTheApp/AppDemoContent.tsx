@@ -1,5 +1,6 @@
 import { Box, SxProps, Theme, Typography } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import { useTranslation } from "react-i18next";
 
 interface IAppDemoContent {
     sx?: SxProps<Theme>;
@@ -44,6 +45,7 @@ function AppDemoOverLayBackground() {
 }
 
 function AppDemoDescription() {
+    const { t } = useTranslation();
     return (
         <Box>
             <Box sx={{
@@ -58,7 +60,7 @@ function AppDemoDescription() {
                         fontWeight: "900",
                         lineHeight: "54px",
                     }}>
-                    ดาวน์โหลดแอปพลิเคชัน “กรุงเทพประกันภัย”
+                    {t("home.getTheApp.title")}
                 </Typography>
                 <Box sx={{
                     display: "flex",
@@ -70,25 +72,25 @@ function AppDemoDescription() {
                             fontSize: "32px",
                             lineHeight: "40px",
                         }}>
-                        พบกับบริการด้านประกันภัยที่สะดวก เข้าถึงง่าย ทุกที่ทุกเวลา
+                        {t("home.getTheApp.description")}
                     </Typography>
                     <Box sx={{
                         fontSize: "22px",
                         lineHeight: "29px"
                     }}>
-                        <li>ดูข้อมูลกรมธรรม์ประกันภัย</li>
-                        <li>แจ้งเคลมรถยนต์</li>
-                        <li>ช่วยเหลือฉุกเฉินบนท้องถนน</li>
-                        <li>รายชื่ออู่หรือศูนย์ซ่อมรถยนต์</li>
-                        <li>รายชื่อสาขาและจุดบริการของกรุงเทพประกันภัย</li>
-                        <li>Live Chat สอบถามข้อมูลต่างๆ กับเจ้าหน้าที่</li>
+                        <li>{t("home.getTheApp.service.viewPolicy")}</li>
+                        <li>{t("home.getTheApp.service.submitClaim")}</li>
+                        <li>{t("home.getTheApp.service.roadsideAssistance")}</li>
+                        <li>{t("home.getTheApp.service.repairCenters")}</li>
+                        <li>{t("home.getTheApp.service.branchesAndServicePoints")}</li>
+                        <li>{t("home.getTheApp.service.liveChat")}</li>
                         <Typography
                             sx={{
                                 color: "#05058C",
                                 fontWeight: "700",
                                 fontSize: "inherit"
                             }}>
-                            #มีโรงพยาบาลในเครือ ที่ครอบคลุมมากที่สุด
+                            {t("home.getTheApp.service.networkHospitals")}
                         </Typography>
                     </Box>
                 </Box>
@@ -98,6 +100,7 @@ function AppDemoDescription() {
 }
 
 function SearchAppDownload() {
+    const { t } = useTranslation();
     return (
         <Box sx={{
             display: "flex",
@@ -114,24 +117,21 @@ function SearchAppDownload() {
                     alignItems: "center",
                     gap: "12px",
                     color: "#05058C"
-                }}
-            >
+                }}>
                 <SearchIcon />
                 <Typography
+                    dangerouslySetInnerHTML={{ __html: t("home.getTheApp.promptSearch") }}
                     sx={{
                         fontSize: "32px",
                         lineHeight: "40px"
-                    }}
-                >
-                    ค้นหา <span style={{ fontWeight: "900" }}>“กรุงเทพประกันภัย”</span>
-                </Typography>
+                    }} />
+                {/* ค้นหา <span style={{ fontWeight: "900" }}>“กรุงเทพประกันภัย”</span> */}
             </Box>
             <Box
                 sx={{
                     display: "flex",
                     gap: "32px",
-                }}
-            >
+                }}>
                 <Box
                     component="img"
                     src="/src/assets/img/get-the-app/download-on-app_store.svg"
@@ -141,8 +141,7 @@ function SearchAppDownload() {
                         userSelect: "none",
                         width: { xs: "120px", sm: "197px" },
                         height: "auto",
-                    }}
-                />
+                    }} />
                 <Box
                     component="img"
                     src="/src/assets/img/get-the-app/download-on-play_store.svg"
@@ -152,8 +151,7 @@ function SearchAppDownload() {
                         userSelect: "none",
                         width: { xs: "120px", sm: "197px" },
                         height: "auto",
-                    }}
-                />
+                    }} />
             </Box>
         </Box>
     )

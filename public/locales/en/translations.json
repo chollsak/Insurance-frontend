@@ -1,0 +1,156 @@
+{
+    "common": {
+        "header": {
+            "placeholder": {
+                "searchPrompt": "Discover your interests"
+            },
+            "navItem": {
+                "home": "Home",
+                "product": "Product",
+                "service": "Service",
+                "about": "About BKI",
+                "investor": "Investor",
+                "contact": "Contact Us",
+                "myBKI": "My BKI"
+            },
+            "secondNavItem": {
+                "individualClient": "Individual Customers",
+                "investmentInterest": "Investment Opportunities",
+                "agentBrokerInfo": "Agent/Broker Information",
+                "forAgents": "For Agents"
+            }
+        },
+        "cookieBanner": {
+            "title": "This website uses cookies",
+            "description": "To enhance your browsing experience and improve our content delivery, we utilize cookies to ensure our services function smoothly and efficiently.",
+            "policyLink": "You can learn more in our <a href='#' style='text-decoration: underline; cursor: pointer; font-weight: bold; color: #FFFFFF;'>Privacy and Personal Data Policy</a>.",
+            "button": {
+                "accept": "Accept All",
+                "manage": "Manage Preferences"
+            }
+        }
+    },
+    "home": {
+        "banner": {
+            "button": "Match with your plan",
+            "title": "Bangkok Insurance",
+            "description1": "New insurance products and services",
+            "description2": "Featuring special Bangkok Insurance promotions"
+        },
+        "suitInsurance": {
+            "title": "Find your perfect coverage"
+        },
+        "insurance": {
+            "title": "All Insurance"
+        },
+        "contactAdmin": {
+            "message": "Contact Admin"
+        },
+        "contact": {
+            "title": "Contact methods",
+            "description": "Ask for more information / Sign up for news",
+            "contactList": {
+                "bki": {
+                    "title": "Contact BKI",
+                    "description": "Monday - Friday, 8:00 AM - 5:00 PM",
+                    "tel": "Tel. 0 2285 8888"
+                },
+                "fine": {
+                    "title": "Contact Fine",
+                    "description": "Monday - Friday, 8:00 AM - 5:00 PM",
+                    "tel": "Tel. 0 2285 8888"
+                },
+                "carAccident": {
+                    "title": "Contact Car Accident",
+                    "description": "24/7 hotline",
+                    "tel": "Tel. 1620"
+                }
+            }
+        },
+        "promotion": {
+            "title": "Promotion",
+            "all": "All Promotions"
+        },
+        "footer": {
+            "product": {
+                "title": "Insurance Product",
+                "travelInsurance": "Travel Insurance",
+                "accidentInsurance": "Accident Insurance",
+                "carInsurance": "Car Insurance",
+                "homeInsurance": "Home and Store Insurance",
+                "healthInsurance": "Health Insurance",
+                "propertyInsurance": "Property Insurance",
+                "publicLiabilityInsurance": "Public Liability Insurance",
+                "insuranceForEntrepreneursshipAndBusiness": "Insurance for Entrepreneursship and Business",
+                "engineerInsurance": "Engineering Insurance",
+                "marineCargoInsurance": "Marine Cargo Insurance",
+                "otherTypesOfInsurance": "Other Types of Insurance"
+            },
+            "ourCompany": {
+                "title": "Our Company",
+                "aboutCompany": "About Company",
+                "vision": "Vision",
+                "executiveBoard": "Executive Board",
+                "organizationalStructure": "Organizational Structure",
+                "organizationalDevelopmentForSustainability": "Organizational Development for Sustainability",
+                "corporateGovernance": "Corporate Governance",
+                "awardOfHonor": "Award of Honor",
+                "corporateSocialResponsibility": "Corporate Social Responsibility",
+                "newsAndActivity": "News & Activity",
+                "advertisingMedia": "Advertising Media"
+            },
+            "myAccount": {
+                "title": "MY ACCOUNT",
+                "yourOnlineInsurance": "Your Online Insurance",
+                "preferredInsurance": "Preferred Insurance",
+                "account": "Account",
+                "signOut": "Sign Out"
+            }
+        },
+        "whyChooseUs": {
+            "title": "Why Choose Us",
+            "subTitle": "The Insurance That Keeps You Ahead",
+            "description": "We are committed to providing our customers with high-quality insurance products and exceptional customer service. Since our founding in 1985, we have worked hard to establish ourselves as a trusted insurance industry.",
+            "service": {
+                "permanentLifeInsurance": {
+                    "title": "Permanent Life Insurance",
+                    "description": "Permanent life insurance is a type of life insurance that provides coverage for the entire lifetime."
+                },
+                "fastAndEasyProcess": {
+                    "title": "Fast & easy process",
+                    "description": "Permanent life insurance is a type of life insurance that provides coverage for the entire lifetime."
+                }
+            },
+            "aBetterValueOfBetterProtection": "A Better value of Better Protection"
+        },
+        "getTheApp": {
+            "title": "Download the “Bangkok Insurance” App",
+            "description": "Experience convenient and accessible insurance services anytime, anywhere.",
+            "service": {
+                "viewPolicy": "View your insurance policy information",
+                "submitClaim": "Submit a motor insurance claim",
+                "roadsideAssistance": "Roadside emergency assistance",
+                "repairCenters": "List of garages or repair centers",
+                "branchesAndServicePoints": "List of Bangkok Insurance branches and service points",
+                "liveChat": "Live Chat with our support staff",
+                "networkHospitals": "#Access to the most comprehensive hospital network"
+            },
+            "promptSearch": "Search for <span style='font-weight: 900;'>“Bangkok Insurance”</span>"
+        },
+        "aboutUs": {
+            "title": "New insurance products, services, and valuable promotions prepared for you by Bangkok Insurance",
+            "description": "we are committed to providing our customers with high-quality insurance products and exceptional customer service. Since our founding in 1985, we have worked hard to establish ourselves as a trusted insurance industry.",
+            "service": {
+                "customizedPolicies": "Customized policies",
+                "comprehensiveCoverage": "Comprehensive coverage",
+                "bestInsuranceAgency": "Best Insurance Agency",
+                "competitivePricing": "Competitive pricing",
+                "flexiblePaymentOptions": "Flexible payment options",
+                "socialResponsibility": "Social Responsibility"
+            },
+            "button": {
+                "more": "More About Us"
+            }
+        }
+    }
+}

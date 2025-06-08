@@ -4,10 +4,10 @@ interface IContactCard {
     iconName: string;
     title: string;
     description: string;
-    phoneNo: string;
+    phoneNoText: string;
 }
 
-export function ContactCard({ iconName, title, description, phoneNo }: IContactCard) {
+export function ContactCard({ iconName, title, description, phoneNoText }: IContactCard) {
     return <Box sx={{
         display: "flex",
         justifyContent: "center",
@@ -79,7 +79,7 @@ export function ContactCard({ iconName, title, description, phoneNo }: IContactC
                     fontSize: "40px",
                     lineHeight: "36px"
                 }}>
-                    โทร. {phoneNo}
+                    {phoneNoText}
                 </Typography>
             </Box>
         </Box>

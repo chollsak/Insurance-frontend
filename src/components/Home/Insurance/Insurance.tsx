@@ -3,6 +3,7 @@ import { Box, Typography } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
 import { getImageUrl } from "../../../utils";
 import { InsuranceListResponse, InsuranceModel } from "../../../models";
+import { useTranslation } from "react-i18next";
 
 const fallBackInsurances: InsuranceModel[] = [
   {
@@ -81,6 +82,7 @@ interface IInsuranceProps {
 }
 
 export function Insurance({ data, isLoading }: IInsuranceProps) {
+  const { t, i18n } = useTranslation();
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const isInsuranceExists = data?.data && data?.data?.length > 0;
@@ -111,7 +113,7 @@ export function Insurance({ data, isLoading }: IInsuranceProps) {
           ml: useSmallFont ? 16 : 20,
           textAlign: "start"
         }}>
-        ประกันภัยทั้งหมด
+        {t("home.insurance.title")}
       </Typography>
 
       {isLoading ? (
@@ -209,7 +211,7 @@ export function Insurance({ data, isLoading }: IInsuranceProps) {
                       mb: 1.5,
                       lineHeight: 1
                     }}>
-                    {insurance.titleTh || insurance.title}
+                    {i18n.language === "en" ? insurance.titleEn : insurance.titleTh}
                   </Typography>
                   <Typography
                     sx={{
@@ -217,7 +219,7 @@ export function Insurance({ data, isLoading }: IInsuranceProps) {
                       color: "#3E4767",
                       lineHeight: 1
                     }}>
-                    {insurance.descriptionTh || insurance.descriptionEn}
+                    {i18n.language === "en" ? insurance.descriptionEn : insurance.descriptionTh}
                   </Typography>
                 </Box>
               </Box>

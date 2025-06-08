@@ -1,5 +1,7 @@
 import { Box, Typography } from "@mui/material";
+import { useTranslation } from "react-i18next";
 export function ContactHeader() {
+    const { t } = useTranslation();
     return (
         <Box sx={{
             display: "flex",
@@ -31,7 +33,7 @@ export function ContactHeader() {
                     letterSpacing: "-2%",
                     textAlign: "center",
                 }}>
-                    ช่องทางการติดต่อ
+                    {t("home.contact.title")}
                 </Typography>
                 <Typography sx={{
                     color: "#3978E9",
@@ -73,7 +75,7 @@ export function ContactHeader() {
                         md: "block",
                     },
                 }}>
-                    สอบถามข้อมูลเพิ่มเติม / สมัครรับข่าวสาร
+                    {t("home.contact.description")}
                 </Typography>
             </Box>
 

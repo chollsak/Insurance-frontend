@@ -1,4 +1,5 @@
 import { Box, Typography } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 interface IAppServiceProps {
     title: string;
@@ -10,95 +11,95 @@ interface IAppServiceProps {
 
 const appServices: IAppServiceProps[] = [
     {
-        title: "สินค้าประกันภัย",
+        title: "home.footer.product.title",
         services: [
             {
-                name: "ประกันภัยการเดินทาง",
+                name: "home.footer.product.travelInsurance",
                 href: "#"
             },
             {
-                name: "ประกันภัยอุบัติเหตุ",
+                name: "home.footer.product.accidentInsurance",
                 href: "#"
             },
             {
-                name: "ประกันภัยรถยนต์",
+                name: "home.footer.product.carInsurance",
                 href: "#"
             },
             {
-                name: "ประกันภัยสำหรับที่อยู่อาศัยและร้านค้า",
+                name: "home.footer.product.homeInsurance",
                 href: "#"
             },
             {
-                name: "ประกันภัยสุขภาพ",
+                name: "home.footer.product.healthInsurance",
                 href: "#"
             },
             {
-                name: "ประกันภัยสำหรับทรัพย์สิน",
+                name: "home.footer.product.propertyInsurance",
                 href: "#"
             },
             {
-                name: "ประกันภัยความรับผิดต่อบุคคลภายนอก",
+                name: "home.footer.product.publicLiabilityInsurance",
                 href: "#"
             },
             {
-                name: "ประกันภัยสำหรับการประกอบการและธุรกิจ",
+                name: "home.footer.product.insuranceForEntrepreneursshipAndBusiness",
                 href: "#"
             },
             {
-                name: "ประกันภัยวิศวกรรม",
+                name: "home.footer.product.engineerInsurance",
                 href: "#"
             },
             {
-                name: "ประกันภัยทางทะเลและขนส่ง",
+                name: "home.footer.product.marineCargoInsurance",
                 href: "#"
             },
             {
-                name: "ประกันภัยประเภทอื่นๆ",
+                name: "home.footer.product.otherTypesOfInsurance",
                 href: "#"
             },
         ]
     },
     {
-        title: "บริษัทของเรา",
+        title: "home.footer.ourCompany.title",
         services: [
             {
-                name: "เกี่ยวกับบริษัทฯ",
+                name: "home.footer.ourCompany.aboutCompany",
                 href: "#"
             },
             {
-                name: "วิสัยทัศน์",
+                name: "home.footer.ourCompany.vision",
                 href: "#"
             },
             {
-                name: "คณะกรรมการ/คณะผู้บริหาร",
+                name: "home.footer.ourCompany.executiveBoard",
                 href: "#"
             },
             {
-                name: "โครงสร้างองค์กร",
+                name: "home.footer.ourCompany.organizationalStructure",
                 href: "#"
             },
             {
-                name: "การพัฒนาองค์กรเพื่อความยั่งยืน",
+                name: "home.footer.ourCompany.organizationalDevelopmentForSustainability",
                 href: "#"
             },
             {
-                name: "การกำกับดูแลกิจการ",
+                name: "home.footer.ourCompany.corporateGovernance",
                 href: "#"
             },
             {
-                name: "รางวัลเกียรติยศ",
+                name: "home.footer.ourCompany.awardOfHonor",
                 href: "#"
             },
             {
-                name: "ความรับผิดชอบต่อสังคมและสิ่งแวดล้อม",
+                name: "home.footer.ourCompany.corporateSocialResponsibility",
                 href: "#"
             },
             {
-                name: "ข่าวสารและกิจกรรม",
+                name: "home.footer.ourCompany.newsAndActivity",
                 href: "#"
             },
             {
-                name: "สื่อโฆษณา",
+                name: "home.footer.ourCompany.advertisingMedia",
                 href: "#"
             },
         ]
@@ -106,10 +107,10 @@ const appServices: IAppServiceProps[] = [
 ]
 
 export function Footer() {
+    const { t } = useTranslation();
     return (
         <Box sx={{
             bgcolor: "#3273E1",
-            maxWidth: "1440px",
             width: "100%",
             minHeight: "570px",
             position: "relative",
@@ -121,6 +122,7 @@ export function Footer() {
             backgroundRepeat: "no-repeat",
             display: "flex",
             justifyContent: "center",
+            userSelect: "none",
         }}>
             <Box sx={{
                 paddingBlock: {
@@ -142,7 +144,6 @@ export function Footer() {
                     <Box sx={{
                         display: "flex",
                         flexDirection: "column",
-
                         gap: {
                             xs: "16px",
                             lg: "48px",
@@ -166,8 +167,7 @@ export function Footer() {
                                     md: "244px",
                                 },
                                 height: "auto",
-                            }}
-                        />
+                            }} />
                         <Box
                             sx={{
                                 display: "grid",
@@ -180,8 +180,7 @@ export function Footer() {
                                 placeItems: "center",
                                 maxWidth: "160px",
                                 width: "100%",
-                            }}
-                        >
+                            }}>
                             <Box
                                 component="img"
                                 src="/src/assets/img/footer/facebook-icon.svg"
@@ -194,8 +193,7 @@ export function Footer() {
                                         lg: "70px",
                                     },
                                     height: "auto",
-                                }}
-                            />
+                                }} />
                             <Box
                                 component="img"
                                 src="/src/assets/img/footer/x-icon.svg"
@@ -208,8 +206,7 @@ export function Footer() {
                                         lg: "70px",
                                     },
                                     height: "auto",
-                                }}
-                            />
+                                }} />
                             <Box
                                 component="img"
                                 src="/src/assets/img/footer/line-icon.svg"
@@ -222,8 +219,7 @@ export function Footer() {
                                         lg: "70px",
                                     },
                                     height: "auto",
-                                }}
-                            />
+                                }} />
                             <Box
                                 component="img"
                                 src="/src/assets/img/footer/youtube-icon.svg"
@@ -236,8 +232,7 @@ export function Footer() {
                                         lg: "70px",
                                     },
                                     height: "auto",
-                                }}
-                            />
+                                }} />
                         </Box>
 
                     </Box>
@@ -276,7 +271,7 @@ export function Footer() {
                                         letterSpacing: "-2%",
                                         color: "#ffffff",
                                     }}>
-                                    MY ACCOUNT
+                                    {t("home.footer.myAccount.title")}
                                 </Typography>
                                 <Box sx={{
                                     display: "flex",
@@ -293,7 +288,7 @@ export function Footer() {
                                                 cursor: "pointer"
                                             }
                                         }}>
-                                        ประกันภัยออนไลน์ของคุณ
+                                        {t("home.footer.myAccount.yourOnlineInsurance")}
                                     </Typography>
                                     <Typography
                                         onClick={() => { }}
@@ -306,7 +301,7 @@ export function Footer() {
                                                 cursor: "pointer"
                                             }
                                         }}>
-                                        ประกันภัยที่สนใจ
+                                        {t("home.footer.myAccount.preferredInsurance")}
                                     </Typography>
                                     <Typography
                                         onClick={() => { }}
@@ -319,7 +314,7 @@ export function Footer() {
                                                 cursor: "pointer"
                                             }
                                         }}>
-                                        บัญชีผู้ใช้
+                                        {t("home.footer.myAccount.account")}
                                     </Typography>
                                     <Typography
                                         onClick={() => { }}
@@ -332,7 +327,7 @@ export function Footer() {
                                                 cursor: "pointer"
                                             }
                                         }}>
-                                        ออกจากระบบ
+                                        {t("home.footer.myAccount.signOut")}
                                     </Typography>
                                 </Box>
                             </Box>
@@ -353,7 +348,6 @@ export function Footer() {
                 </Box>
             </Box>
 
-            {/* position absolute */}
             <Box
                 component="img"
                 src="/src/assets/img/footer/cover.svg"
@@ -460,6 +454,7 @@ export function Footer() {
 }
 
 function AppServiceCard({ title, services }: IAppServiceProps) {
+    const { t } = useTranslation();
     return (
         <Box sx={{
             display: "flex",
@@ -473,7 +468,7 @@ function AppServiceCard({ title, services }: IAppServiceProps) {
                 letterSpacing: "-2%",
                 color: "#ffffff",
             }}>
-                {title}
+                {t(title)}
             </Typography>
             <Box sx={{
                 display: "flex",
@@ -494,7 +489,7 @@ function AppServiceCard({ title, services }: IAppServiceProps) {
                                 lineHeight: "30px",
                                 color: "#ffffff",
                             }}>
-                                {service.name}
+                                {t(service.name)}
                             </Typography>
                         </Box>
                     )

@@ -3,6 +3,7 @@ import { Box, Typography, Paper, Stack } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
 import { getImageUrl } from "../../../utils";
 import { SuitInsuranceListResponse, SuitInsuranceModel } from "../../../models";
+import { useTranslation } from "react-i18next";
 
 const fallBackSuitInsuranceList: SuitInsuranceModel[] = [
   {
@@ -79,6 +80,8 @@ interface ISuitInsuranceProps {
 }
 
 export function SuitInsurance({ data, isLoading }: ISuitInsuranceProps) {
+  const { t, i18n } = useTranslation();
+
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const isSuitInsurancesExists = data?.data && data?.data?.length > 0;
@@ -117,7 +120,7 @@ export function SuitInsurance({ data, isLoading }: ISuitInsuranceProps) {
             ml: useSmallFont ? 8 : 10,
             textAlign: "start"
           }}>
-          ประกันภัยที่เหมาะกับคุณ
+          {t("home.suitInsurance.title")}
         </Typography>
 
         {isLoading ? (
@@ -194,7 +197,7 @@ export function SuitInsurance({ data, isLoading }: ISuitInsuranceProps) {
                       fontWeight: "thin",
                       color: "#14284B"
                     }}>
-                    {suitInsurance.titleTh || suitInsurance.title}
+                    {i18n.language === "en" ? suitInsurance.titleEn : suitInsurance.titleTh}
                   </Typography>
                 </Paper>
               </Box>

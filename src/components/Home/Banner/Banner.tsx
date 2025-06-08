@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Box, Typography, Button, CircularProgress } from "@mui/material";
 import { BannerListResponse, BannerModel } from "../../../models";
 import { getImageUrl } from "../../../utils";
+import { useTranslation } from "react-i18next";
 
 const fallBackBanner: BannerModel = {
   id: "00000000-1111-2222-3333-444444444444",
@@ -42,6 +43,8 @@ interface IBannerProps {
 }
 
 export function Banner({ data, isLoading }: IBannerProps) {
+  const { t } = useTranslation();
+
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const scrollRef = useRef<HTMLDivElement>(null);
   const cardWidth = windowWidth <= 1450 ? 300 : 350;
@@ -85,58 +88,56 @@ export function Banner({ data, isLoading }: IBannerProps) {
         height={useSmallFont ? 350 : 393.56}
         sx={{
           backgroundImage: `url(${backgroundImage})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          position: 'relative',
-          display: 'flex',
-          alignItems: 'center',
-          paddingLeft: useSmallFont ? '80px' : '130px',
-          '&::before': {
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          position: "relative",
+          display: "flex",
+          alignItems: "center",
+          paddingLeft: useSmallFont ? "80px" : "130px",
+          "&::before": {
             content: '""',
-            position: 'absolute',
+            position: "absolute",
             top: 0,
             left: 0,
             right: 0,
             bottom: 0,
-            backgroundColor: 'rgba(57, 120, 233, 0.4)',
+            backgroundColor: "rgba(57, 120, 233, 0.4)",
             zIndex: 1,
           },
-          '&::after': {
+          "&::after": {
             content: '""',
-            position: 'absolute',
+            position: "absolute",
             top: 0,
             left: 0,
             right: 0,
             bottom: 0,
             backgroundImage: `url(${backgroundImage})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
+            backgroundSize: "cover",
+            backgroundPosition: "center",
             zIndex: 0,
             opacity: 0,
-            transition: 'opacity 0.5s ease',
+            transition: "opacity 0.5s ease",
           }
         }}
         onError={() => {
-          console.error('Error loading background image');
-        }}
-      >
+          console.error("Error loading background image");
+        }}>
         <Box
           sx={{
-            color: 'white',
-            width: useSmallFont ? '35%' : '30%',
+            color: "#FFFFFF",
+            width: useSmallFont ? "35%" : "30%",
             zIndex: 2,
-            position: 'relative',
+            position: "relative",
             mb: useSmallFont ? 16 : 18,
-          }}
-        >
-          <Typography sx={{ mb: -1, fontWeight: 'bold', fontSize: useSmallFont ? '36px' : '40px' }}>
-            กรุงเทพประกันภัย
+          }}>
+          <Typography sx={{ mb: -1, fontWeight: "bold", fontSize: useSmallFont ? "36px" : "40px" }}>
+            {t("home.banner.title")}
           </Typography>
-          <Typography sx={{ mb: -1, fontSize: useSmallFont ? '22px' : '24px' }}>
-            สินค้าประกันภัยและบริการใหม่
+          <Typography sx={{ mb: -1, fontSize: useSmallFont ? "22px" : "24px" }}>
+            {t("home.banner.description1")}
           </Typography>
-          <Typography sx={{ mb: 1, fontSize: useSmallFont ? '22px' : '24px' }}>
-            รวมทั้งโปรโมชั่นที่คุ้มค่าที่กรุงเทพประกันภัยเตรียมไว้ให้คุณ
+          <Typography sx={{ mb: 1, fontSize: useSmallFont ? "22px" : "24px" }}>
+            {t("home.banner.description2")}
           </Typography>
           <Button
             variant="contained"
@@ -145,59 +146,57 @@ export function Banner({ data, isLoading }: IBannerProps) {
             target="_blank"
             rel="noopener noreferrer"
             sx={{
-              bgcolor: '#05058C',
+              bgcolor: "#05058C",
               mb: -20,
-              '&:hover': { bgcolor: '#001850' },
-              borderRadius: '12px',
-              padding: useSmallFont ? '8px 35px' : '10px 45px',
-              textTransform: 'none',
-              fontSize: useSmallFont ? '22px' : '24px',
-              textDecoration: 'none',
-            }}
-          >
-            ค้นหาแผนประกันที่ใช่
+              "&:hover": { bgcolor: "#001850" },
+              borderRadius: "12px",
+              padding: useSmallFont ? "8px 35px" : "10px 45px",
+              textTransform: "none",
+              fontSize: useSmallFont ? "22px" : "24px",
+              textDecoration: "none",
+            }}>
+            {t("home.banner.button")}
           </Button>
         </Box>
 
-        <Box sx={{ width: '70%', position: 'relative', zIndex: 2 }}>
+        <Box sx={{ width: "70%", position: "relative", zIndex: 2 }}>
           {isLoading ? (
             <Box sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
               height: `${cardWidth}px`
             }}>
-              <CircularProgress sx={{ color: 'white' }} />
+              <CircularProgress sx={{ color: "#FFFFFF" }} />
             </Box>
           ) : (
             <Box
               ref={scrollRef}
               sx={{
-                display: 'flex',
+                display: "flex",
                 gap: `${gap}px`,
-                overflowX: 'auto',
-                overflowY: 'hidden',
-                scrollbarWidth: 'thin',
-                '&::-webkit-scrollbar': { height: '6px' },
-                '&::-webkit-scrollbar-track': {
-                  background: 'rgba(255, 255, 255, 0.1)',
-                  borderRadius: '10px',
+                overflowX: "auto",
+                overflowY: "hidden",
+                scrollbarWidth: "thin",
+                "&::-webkit-scrollbar": { height: "6px" },
+                "&::-webkit-scrollbar-track": {
+                  background: "rgba(255, 255, 255, 0.1)",
+                  borderRadius: "10px",
                 },
-                '&::-webkit-scrollbar-thumb': {
-                  background: 'rgba(255, 255, 255, 0.3)',
-                  borderRadius: '10px',
-                  '&:hover': {
-                    background: 'rgba(255, 255, 255, 0.5)',
+                "&::-webkit-scrollbar-thumb": {
+                  background: "rgba(255, 255, 255, 0.3)",
+                  borderRadius: "10px",
+                  "&:hover": {
+                    background: "rgba(255, 255, 255, 0.5)",
                   },
                 },
-                padding: '10px 5px',
-                scrollBehavior: 'smooth',
-                cursor: 'grab',
-                '&:active': {
-                  cursor: 'grabbing',
+                padding: "10px 5px",
+                scrollBehavior: "smooth",
+                cursor: "grab",
+                "&:active": {
+                  cursor: "grabbing",
                 },
-              }}
-            >
+              }}>
               {bannerImages.map((src, index) => {
                 let href = "#";
                 if (banner && banner.contents && index < banner.contents.length) {
@@ -212,10 +211,9 @@ export function Banner({ data, isLoading }: IBannerProps) {
                     target="_blank"
                     rel="noopener noreferrer"
                     sx={{
-                      display: 'block',
-                      textDecoration: 'none',
-                    }}
-                  >
+                      display: "block",
+                      textDecoration: "none",
+                    }}>
                     <Box
                       component="img"
                       src={src}
@@ -226,8 +224,8 @@ export function Banner({ data, isLoading }: IBannerProps) {
                       sx={{
                         width: `${cardWidth}px`,
                         height: `${cardWidth}px`,
-                        objectFit: 'cover',
-                        borderRadius: '12px',
+                        objectFit: "cover",
+                        borderRadius: "12px",
                         flexShrink: 0,
                         userSelect: "none",
                       }}

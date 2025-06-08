@@ -1,81 +1,37 @@
-import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
-import LanguageDetector from 'i18next-browser-languagedetector';
+import i18n from "i18next";
+import { initReactI18next } from "react-i18next";
 
-// English translations
-const enTranslations = {
-  welcome: 'Welcome to the Insurance Portal',
-  login: 'Login',
-  dashboard: 'Dashboard',
-  
-  home: {
-    intro: 'Welcome to your comprehensive insurance management platform. Easily manage your policies, claims, and customer information in one place.',
-    policyManagement: {
-      title: 'Policy Management',
-      description: 'Create, view and manage insurance policies for your customers.',
-      button: 'View Policies'
-    },
-    claimsProcessing: {
-      title: 'Claims Processing',
-      description: 'Process insurance claims efficiently and track their status.',
-      button: 'Manage Claims'
-    },
-    customerProfiles: {
-      title: 'Customer Profiles',
-      description: 'Access and update customer information and policy details.',
-      button: 'View Customers'
-    },
-    goToDashboard: 'Go to Dashboard'
-  }
-};
-
-// Thai translations
-const thTranslations = {
-  welcome: 'ยินดีต้อนรับสู่พอร์ทัลประกันภัย',
-  login: 'เข้าสู่ระบบ',
-  dashboard: 'แดชบอร์ด',
-  
-  home: {
-    intro: 'ยินดีต้อนรับสู่แพลตฟอร์มการจัดการประกันภัยที่ครอบคลุม จัดการกรมธรรม์ การเรียกร้อง และข้อมูลลูกค้าของคุณได้อย่างง่ายดายในที่เดียว',
-    policyManagement: {
-      title: 'การจัดการกรมธรรม์',
-      description: 'สร้าง ดู และจัดการกรมธรรม์ประกันภัยสำหรับลูกค้าของคุณ',
-      button: 'ดูกรมธรรม์'
-    },
-    claimsProcessing: {
-      title: 'การจัดการเคลม',
-      description: 'ดำเนินการเคลมประกันภัยอย่างมีประสิทธิภาพและติดตามสถานะของพวกเขา',
-      button: 'จัดการเคลม'
-    },
-    customerProfiles: {
-      title: 'โปรไฟล์ลูกค้า',
-      description: 'เข้าถึงและอัปเดตข้อมูลลูกค้าและรายละเอียดกรมธรรม์',
-      button: 'ดูลูกค้า'
-    },
-    goToDashboard: 'ไปที่แดชบอร์ด'
-  }
-};
+import Backend from "i18next-http-backend";
+import LanguageDetector from "i18next-browser-languagedetector";
+// don"t want to use this?
+// have a look at the Quick start guide 
+// for passing in lng and translations on init
 
 i18n
+  // load translation using http -> see /public/locales (i.e. https://github.com/i18next/react-i18next/tree/master/example/react/public/locales)
+  // learn more: https://github.com/i18next/i18next-http-backend
+  // want your translations to be loaded from a professional CDN? => https://github.com/locize/react-tutorial#step-2---use-the-locize-cdn
+  .use(Backend)
+  // detect user language
+  // learn more: https://github.com/i18next/i18next-browser-languageDetector
   .use(LanguageDetector)
+  // pass the i18n instance to react-i18next.
   .use(initReactI18next)
+  // init i18next
+  // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
-    resources: {
-      en: {
-        translation: enTranslations
-      },
-      th: {
-        translation: thTranslations
-      }
+    fallbackLng: "en",
+    debug: true,
+    supportedLngs: ["en", "th"],
+    ns: ["translations"],
+    defaultNS: "translations",
+    backend: {
+      loadPath: "/locales/{{lng}}/translations.json",
     },
-    fallbackLng: 'en',
     interpolation: {
-      escapeValue: false,
+      escapeValue: false, // not needed for react as it escapes by default
     },
-    detection: {
-      order: ['localStorage', 'navigator'],
-      caches: ['localStorage'],
-    }
   });
+
 
 export default i18n;

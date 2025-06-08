@@ -9,27 +9,38 @@ import { Button, CircularProgress } from "@mui/material";
 import { Link } from "react-router-dom";
 import { getImageUrl } from "../../../utils";
 import { PromotionListResponse } from "../../../models";
+import { useTranslation } from "react-i18next";
 
 interface IPromotionProps {
   data?: PromotionListResponse;
   isLoading: boolean;
 }
-export function Promotion({data, isLoading}: IPromotionProps) {
+
+export function Promotion({ data, isLoading }: IPromotionProps) {
+  const { t, i18n } = useTranslation();
+
   const promotionResponse = data?.data ?? [];
-  const promotions: Promotion[] = promotionResponse.map(p => {
+  const promotions: Promotion[] = promotionResponse.map((p) => {
+    const isThai = i18n.language === "th";
+    const date = new Date(p.effectiveTo);
+
+    const todayLabel = isThai ? "วันนี้" : "Today";
+
+    const formattedDate = date.toLocaleDateString(isThai ? "th-TH" : "en-US", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
+
     return {
       id: p.id,
-      title: p.titleTh,
-      description: p.descriptionTh,
+      title: isThai ? p.titleTh : p.titleEn,
+      description: isThai ? p.descriptionTh : p.descriptionEn,
       coverImage: getImageUrl(p.coverImagePath)!,
-      validUntil: `วันนี้ - ${new Date(p.effectiveTo).toLocaleDateString("th-TH", {
-        day: "numeric",
-        month: "long",
-        year: "numeric"
-      })}`,
+      validUntil: `${todayLabel} - ${formattedDate}`,
       discount: "",
       couponCode: "",
-    }
+    };
   }) ?? [];
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -160,9 +171,8 @@ export function Promotion({data, isLoading}: IPromotionProps) {
                 color: "#0f0b75",
                 fontWeight: "bold",
                 fontSize: useSmallFont ? "30px" : "32px"
-              }}
-            >
-              โปรโมชัน
+              }}>
+              {t("home.promotion.title")}
             </Typography>
             <Typography
               component={Link}
@@ -175,20 +185,17 @@ export function Promotion({data, isLoading}: IPromotionProps) {
                 display: "flex",
                 textDecoration: "underline 2px",
                 alignItems: "center"
-              }}
-            >
-              โปรโมชันทั้งหมด
+              }}>
+              {t("home.promotion.all")}
             </Typography>
           </Box>
 
-          {/* Desktop view with scrollable container */}
           <Box sx={{
             display: { xs: "none", md: "block" },
             position: "relative",
             flexGrow: 1,
             mt: 2
           }}>
-            {/* Left shadow indicator */}
             {showLeftShadow && (
               <Box
                 sx={{
@@ -204,7 +211,6 @@ export function Promotion({data, isLoading}: IPromotionProps) {
               />
             )}
 
-            {/* Right shadow indicator */}
             {showRightShadow && (
               <Box
                 sx={{
@@ -220,7 +226,6 @@ export function Promotion({data, isLoading}: IPromotionProps) {
               />
             )}
 
-            {/* Navigation buttons */}
             <IconButton
               sx={{
                 position: "absolute",
@@ -235,8 +240,7 @@ export function Promotion({data, isLoading}: IPromotionProps) {
                 zIndex: 2,
                 display: showLeftShadow ? "flex" : "none"
               }}
-              onClick={handlePrev}
-            >
+              onClick={handlePrev}>
               <ChevronLeftIcon />
             </IconButton>
 
@@ -259,7 +263,6 @@ export function Promotion({data, isLoading}: IPromotionProps) {
               <ChevronRightIcon />
             </IconButton>
 
-            {/* Scrollable container */}
             <Box
               ref={scrollContainerRef}
               sx={{
@@ -280,8 +283,7 @@ export function Promotion({data, isLoading}: IPromotionProps) {
               onMouseUp={handleMouseUp}
               onMouseLeave={handleMouseUp}
               onMouseMove={handleMouseMove}
-              onScroll={handleScroll}
-            >
+              onScroll={handleScroll}>
               {promotions.map((promotion) => (
                 <Box
                   key={promotion.id}
@@ -289,15 +291,13 @@ export function Promotion({data, isLoading}: IPromotionProps) {
                     flex: "0 0 auto",
                     width: useSmallFont ? "400px" : "430px",
                     height: "100%",
-                  }}
-                >
+                  }}>
                   <PromotionCard promotion={promotion} useSmallFont={useSmallFont} bgColor="#a8bbd6" />
                 </Box>
               ))}
             </Box>
           </Box>
 
-          {/* Mobile view */}
           <Box sx={{
             display: { xs: "block", md: "none" },
             position: "relative",
@@ -332,7 +332,6 @@ export function Promotion({data, isLoading}: IPromotionProps) {
               </Box>
             </Box>
 
-            {/* Navigation buttons for mobile */}
             <IconButton
               sx={{
                 position: "absolute",
@@ -375,7 +374,6 @@ export function Promotion({data, isLoading}: IPromotionProps) {
               <ChevronRightIcon />
             </IconButton>
 
-            {/* Indicators for mobile */}
             <Box sx={{
               display: "flex",
               justifyContent: "center",
@@ -472,8 +470,7 @@ function PromotionCard({ promotion, useSmallFont, bgColor }: IPromotionCardProps
           flexDirection: "column",
           flexGrow: 1,
           minHeight: "200px",
-        }}
-      >
+        }}>
         <Typography
           sx={{
             fontSize: useSmallFont ? "24px" : "26px",
@@ -481,8 +478,7 @@ function PromotionCard({ promotion, useSmallFont, bgColor }: IPromotionCardProps
             color: "#05058C",
             mb: 1,
             lineHeight: 1.2,
-          }}
-        >
+          }}>
           {promotion.title}
         </Typography>
 
@@ -497,8 +493,7 @@ function PromotionCard({ promotion, useSmallFont, bgColor }: IPromotionCardProps
             WebkitBoxOrient: "vertical",
             textOverflow: "ellipsis",
             lineHeight: 1.3,
-          }}
-        >
+          }}>
           {promotion.description}
         </Typography>
 
@@ -511,8 +506,7 @@ function PromotionCard({ promotion, useSmallFont, bgColor }: IPromotionCardProps
             mb: -2,
             pt: 0,
             borderTop: "0px solid #eee",
-          }}
-        >
+          }}>
           <Typography sx={{ color: "#05058C", fontSize: useSmallFont ? "16px" : "18px" }}>
             {promotion.validUntil}
           </Typography>

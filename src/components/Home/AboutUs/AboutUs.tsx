@@ -1,20 +1,22 @@
 import { Box, Button, Icon, Typography } from "@mui/material";
 import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
+import { useTranslation } from "react-i18next";
 
 const firstServiceList = [
-    "Customized policies",
-    "Comprehensive coverage",
-    "Best Insurance Agency",
+    "home.aboutUs.service.customizedPolicies",
+    "home.aboutUs.service.comprehensiveCoverage",
+    "home.aboutUs.service.bestInsuranceAgency",
 ]
 
 const secondServiceList: string[] = [
 
-    "Competitive pricing",
-    "Flexible payment options",
-    "Social responsibility"
+    "home.aboutUs.service.competitivePricing",
+    "home.aboutUs.service.flexiblePaymentOptions",
+    "home.aboutUs.service.socialResponsibility"
 ]
 
 export function AboutUs() {
+    const { t } = useTranslation();
     return (
         <Box sx={{
             bgcolor: "#FFFFFF",
@@ -66,7 +68,6 @@ export function AboutUs() {
                 <Box sx={{
                     display: "flex",
                     flexDirection: "column",
-                    // bgcolor: "red",
                     gap: "32px",
                     paddingInline: "64px",
                 }}>
@@ -81,7 +82,7 @@ export function AboutUs() {
                             fontSize: "48px",
                             lineHeight: "62px",
                         }}>
-                            สินค้าประกันภัยและบริการใหม่ รวมถึงโปรโมชัน คุ้มค่า ที่กรุงเทพประกันภัยเตรียมไว้ให้คุณ
+                            {t("home.aboutUs.title")}
                         </Typography>
 
                         <Box sx={{
@@ -97,7 +98,7 @@ export function AboutUs() {
                                 fontSize: "24px",
                                 lineHeight: "29px"
                             }}>
-                                we are committed to providing our customers with high-quality insurance products and exceptional customer service. Since our founding in 1985, we have worked hard to establish ourselves as a trusted insurance industry.
+                                {t("home.aboutUs.description")}
                             </Typography>
                             <Box sx={{
                                 display: "flex",
@@ -128,7 +129,7 @@ export function AboutUs() {
                                                     fontSize: "20px",
                                                     lineHeight: "29px"
                                                 }}>
-                                                    {srv}
+                                                    {t(srv)}
                                                 </Typography>
                                             </Box>
                                         )
@@ -160,7 +161,7 @@ export function AboutUs() {
                                                     fontSize: "20px",
                                                     lineHeight: "29px"
                                                 }}>
-                                                    {srv}
+                                                    {t(srv)}
                                                 </Typography>
                                             </Box>
                                         )
@@ -172,7 +173,6 @@ export function AboutUs() {
                         </Box>
                     </Box>
 
-                    {/* More about us */}
                     <Button
                         variant="outlined"
                         sx={{
@@ -187,7 +187,7 @@ export function AboutUs() {
                             fontSize: "22px",
                             lineHeight: "100%",
                         }}>
-                            More About Us
+                            {t("home.aboutUs.button.more")}
                         </Typography>
                     </Button>
                 </Box>

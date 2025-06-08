@@ -1,0 +1,156 @@
+{
+    "common": {
+        "header": {
+            "placeholder": {
+                "searchPrompt": "ค้นหาสิ่งที่คุณสนใจ"
+            },
+            "navItem": {
+                "home": "หน้าหลัก",
+                "product": "สินค้า",
+                "service": "บริการ",
+                "about": "เกี่ยวกับเรา",
+                "investor": "นักลงทุน",
+                "contact": "ติดต่อเรา",
+                "myBKI": "My BKI"
+            },
+            "secondNavItem": {
+                "individualClient": "ลูกค้าส่วนบุคคล",
+                "investmentInterest": "สนใจด้านการลงทุน",
+                "agentBrokerInfo": "สนใจข้อมูลตัวเเทน / นายหน้า",
+                "forAgents": "สำหรับตัวเเทน"
+            }
+        },
+        "cookieBanner": {
+            "title": "เว็บไซต์นี้มีการจัดเก็บคุกกี้ (Cookies)",
+            "description": "เพื่อพัฒนาปรับปรุงการนำเสนอเนื้อหาที่ดีสำหรับผู้ใช้งาน และอำนวยความสะดวกให้ผู้ใช้งานสามารถใช้บริการต่างๆ ภายในเว็บไซต์ได้ง่ายและมีประสิทธิภาพยิ่งขึ้น",
+            "policyLink": "ท่านสามารถศึกษารายละเอียดคุกกี้ได้ที่ <a href='#' style='text-decoration: underline; cursor: pointer; font-weight: bold; color: #FFFFFF;'>นโยบายความเป็นส่วนตัวและข้อมูลส่วนบุคคล</a> ของบริษัทฯ",
+            "button": {
+                "accept": "ยินยอมทั้งหมด",
+                "manage": "ตั้งค่าคุกกี้"
+            }
+        }
+    },
+    "home": {
+        "banner": {
+            "button": "ค้นหาแผนประกันที่ใช่",
+            "title": "กรุงเทพประกันภัย",
+            "description1": "สินค้าประกันภัยและบริการใหม่",
+            "description2": "รวมทั้งโปรโมชั่นที่คุ้มค่าที่กรุงเทพประกันภัยเตรียมไว้ให้คุณ"
+        },
+        "suitInsurance": {
+            "title": "ประกันภัยที่เหมาะกับคุณ"
+        },
+        "insurance": {
+            "title": "ประกันภัยทั้งหมด"
+        },
+        "contactAdmin": {
+            "message": "คุยกับเรา"
+        },
+        "contact": {
+            "title": "ช่องทางการติดต่อ",
+            "description": "สอบถามข้อมูลเพิ่มเติม / สมัครรับข่าวสาร",
+            "contactList": {
+                "bki": {
+                    "title": "ติดต่อกรุงเทพประกันภัย",
+                    "description": "จันทร์ - ศุกร์ เวลา 08.00 - 17.00 น.",
+                    "tel": "โทร. 0 2285 8888"
+                },
+                "fine": {
+                    "title": "ติดต่อสินไหมทดแทน",
+                    "description": "จันทร์ - ศุกร์ เวลา 08.00 - 17.00 น.",
+                    "tel": "โทร. 0 2285 8888"
+                },
+                "carAccident": {
+                    "title": "ติดต่อกรุงเทพประกันภัย",
+                    "description": "สายด่วน 24 ชั่วโมง",
+                    "tel": "โทร. 1620"
+                }
+            }
+        },
+        "promotion": {
+            "title": "โปรโมชั่น",
+            "all": "โปรโมชันทั้งหมด"
+        },
+        "footer": {
+            "product": {
+                "title": "สินค้าประกันภัย",
+                "travelInsurance": "ประกันภัยการเดินทาง",
+                "accidentInsurance": "ประกันภัยอุบัติเหตุ",
+                "carInsurance": "ประกันภัยรถยนต์",
+                "homeInsurance": "ประกันภัยสำหรับที่อยู่อาศัยและร้านค้า",
+                "healthInsurance": "ประกันภัยสุขภาพ",
+                "propertyInsurance": "ประกันภัยสำหรับทรัพย์สิน",
+                "publicLiabilityInsurance": "ประกันภัยความรับผิดต่อบุคคลภายนอก",
+                "insuranceForEntrepreneursshipAndBusiness": "ประกันภัยสำหรับการประกอบการและธุรกิจ",
+                "engineerInsurance": "ประกันภัยวิศวกรรม",
+                "marineCargoInsurance": "ประกันภัยทางทะเลและขนส่ง",
+                "otherTypesOfInsurance": "ประกันภัยประเภทอื่นๆ"
+            },
+            "ourCompany": {
+                "title": "บริษัทของเรา",
+                "aboutCompany": "เกี่ยวกับบริษัทฯ",
+                "vision": "วิสัยทัศน์",
+                "executiveBoard": "คณะกรรมการ/คณะผู้บริหาร",
+                "organizationalStructure": "โครงสร้างองค์กร",
+                "organizationalDevelopmentForSustainability": "การพัฒนาองค์กรเพื่อความยั่งยืน",
+                "corporateGovernance": "การกำกับดูแลกิจการ",
+                "awardOfHonor": "รางวัลเกียรติยศ",
+                "corporateSocialResponsibility": "ความรับผิดชอบต่อสังคมและสิ่งแวดล้อม",
+                "newsAndActivity": "ข่าวสารและกิจกรรม",
+                "advertisingMedia": "สื่อโฆษณา"
+            },
+            "myAccount": {
+                "title": "MY ACCOUNT",
+                "yourOnlineInsurance": "ประกันภัยออนไลน์ของคุณ",
+                "preferredInsurance": "ประกันภัยที่สนใจ",
+                "account": "บัญชีผู้ใช้",
+                "signOut": "ออกจากระบบ"
+            }
+        },
+        "whyChooseUs": {
+            "title": "ทำไมถึงเลือกเรา",
+            "subTitle": "ประกันภัยที่ช่วยให้คุณก้าวนำ",
+            "description": "เรามุ่งมั่นที่จะให้บริการลูกค้าด้วยผลิตภัณฑ์ประกันภัยคุณภาพสูงและการบริการที่ยอดเยี่ยม ตั้งแต่ก่อตั้งในปี 1985 เราได้พยายามอย่างหนักเพื่อสร้างความน่าเชื่อถือในอุตสาหกรรมประกันภัย",
+            "service": {
+                "permanentLifeInsurance": {
+                    "title": "ประกันชีวิตถาวร",
+                    "description": "ประกันชีวิตถาวรเป็นประเภทของประกันชีวิตที่ให้ความคุ้มครองตลอดอายุขัย"
+                },
+                "fastAndEasyProcess": {
+                    "title": "ขั้นตอนรวดเร็วและง่ายดาย",
+                    "description": "ประกันชีวิตถาวรเป็นประเภทของประกันชีวิตที่ให้ความคุ้มครองตลอดอายุขัย"
+                }
+            },
+            "aBetterValueOfBetterProtection": "คุณค่าที่ดีกว่าสำหรับความคุ้มครองที่เหนือกว่า"
+        },
+        "getTheApp": {
+            "title": "ดาวน์โหลดแอปพลิเคชัน “กรุงเทพประกันภัย”",
+            "description": "พบกับบริการด้านประกันภัยที่สะดวก เข้าถึงง่าย ทุกที่ทุกเวลา",
+            "service": {
+                "viewPolicy": "ดูข้อมูลกรมธรรม์ประกันภัย",
+                "submitClaim": "แจ้งเคลมรถยนต์",
+                "roadsideAssistance": "ช่วยเหลือฉุกเฉินบนท้องถนน",
+                "repairCenters": "รายชื่ออู่หรือศูนย์ซ่อมรถยนต์",
+                "branchesAndServicePoints": "รายชื่อสาขาและจุดบริการของกรุงเทพประกันภัย",
+                "liveChat": "Live Chat สอบถามข้อมูลต่างๆ กับเจ้าหน้าที่",
+                "networkHospitals": "#มีโรงพยาบาลในเครือ ที่ครอบคลุมมากที่สุด"
+            },
+            "promptSearch": "ค้นหา <span style='font-weight: 900;'>“กรุงเทพประกันภัย”</span>"
+        },
+        "aboutUs": {
+            "title": "สินค้าประกันภัยและบริการใหม่ รวมถึงโปรโมชัน คุ้มค่า ที่กรุงเทพประกันภัยเตรียมไว้ให้คุณ",
+            "description": "เรามุ่งมั่นในการให้บริการลูกค้าด้วยผลิตภัณฑ์ประกันภัยคุณภาพสูงและการบริการที่เป็นเลิศ นับตั้งแต่ก่อตั้งในปี พ.ศ. 2528 เราได้ทำงานอย่างหนักเพื่อสร้างความเชื่อมั่นในอุตสาหกรรมประกันภัย",
+            "service": {
+                "customizedPolicies": "กรมธรรม์ที่ออกแบบเฉพาะสำหรับคุณ",
+                "comprehensiveCoverage": "ความคุ้มครองที่ครอบคลุม",
+                "bestInsuranceAgency": "ตัวแทนประกันภัยยอดเยี่ยม",
+                "competitivePricing": "ราคาที่แข่งขันได้",
+                "flexiblePaymentOptions": "ตัวเลือกการชำระเงินที่ยืดหยุ่น",
+                "socialResponsibility": "ความรับผิดชอบต่อสังคม"
+            },
+            "button": {
+                "more": "เพิ่มเติมเกี่ยวกับเรา"
+            }
+        }
+    }
+}

@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 import { Box, Typography, Button } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 export function CookieAccepter() {
+  const { t } = useTranslation();
+
   const [showCookieConsent, setShowCookieConsent] = useState(true);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -39,7 +42,7 @@ export function CookieAccepter() {
         left: 0,
         right: 0,
         backgroundColor: "#05058C",
-        color: "white",
+        color: "#FFFFFF",
         padding: useSmallFont ? "16px" : "18px",
         paddingLeft: useSmallFont ? "30px" : "40px",
         zIndex: 9999,
@@ -48,69 +51,33 @@ export function CookieAccepter() {
         alignItems: { xs: "flex-start", md: "center" },
         justifyContent: "space-between",
         height: "135px"
-      }}
-    >
+      }}>
       <Box sx={{ flex: 1 }}>
         <Typography
           fontSize={useSmallFont ? "22px" : "24px"}
-          sx={{ fontWeight: "bold" }}
-        >
-          เว็บไซต์นี้มีการจัดเก็บคุกกี้ (Cookies)
+          sx={{ fontWeight: "bold" }}>
+          {t("common.cookieBanner.title")}
         </Typography>
         <Typography
           fontSize={useSmallFont ? "16px" : "18px"}
-          sx={{ mb: -0.5 }}
-        >
-          เพื่อพัฒนาปรับปรุงการนำเสนอเนื้อหาที่ดีสำหรับผู้ใช้งาน และอำนวยความสะดวกให้ผู้ใช้งานสามารถใช้บริการต่างๆ ภายในเว็บไซต์ได้ง่ายและมีประสิทธิภาพยิ่งขึ้น
+          sx={{ mb: -0.5 }}>
+          {t("common.cookieBanner.description")}
         </Typography>
         <Typography
           fontSize={useSmallFont ? "16px" : "18px"}
-        >
-          ท่านสามารถศึกษารายละเอียดคุกกี้ได้ที่{" "}
-          <Box
-            component="span"
-            sx={{
-              textDecoration: "underline",
-              cursor: "pointer",
-              fontWeight: "bold",
-            }}
-          >
-            นโยบายความเป็นส่วนตัวและข้อมูลส่วนบุคคล
-          </Box>
-          ของบริษัทฯ
-        </Typography>
+          dangerouslySetInnerHTML={{ __html: t("common.cookieBanner.policyLink") }} />
       </Box>
       <Box
         sx={{
           display: "flex",
-          gap: useSmallFont ? 4 : 5,
-          mt: { xs: 2, md: 2 },
           flexDirection: { xs: "column", sm: "row" },
           width: { xs: "100%", md: "auto" },
-        }}
-      >
-        <Button
-          variant="outlined"
-          onClick={handleAcceptNecessary}
-          sx={{
-            borderColor: "white",
-            color: "white",
-            borderRadius: 2,
-            padding: useSmallFont ? "2px 50px" : "2px 60px",
-            fontSize: useSmallFont ? "22px" : "24px",
-            "&:hover": {
-              borderColor: "white",
-              backgroundColor: "rgba(255, 255, 255, 0.1)",
-            },
-          }}
-        >
-          ตั้งค่าคุกกี้
-        </Button>
+        }}>
         <Button
           variant="contained"
-          onClick={handleAcceptAll}
+          onClick={handleAcceptNecessary}
           sx={{
-            backgroundColor: "white",
+            backgroundColor: "#FFFFFF",
             color: "#05058C",
             borderRadius: 2,
             padding: useSmallFont ? "6px 40px" : "8px 50px",
@@ -119,9 +86,24 @@ export function CookieAccepter() {
             "&:hover": {
               backgroundColor: "rgba(255, 255, 255, 0.8)",
             },
-          }}
-        >
-          ยินยอมทั้งหมด
+          }}>
+          {t("common.cookieBanner.button.manage")}
+        </Button>
+        <Button
+          variant="contained"
+          onClick={handleAcceptAll}
+          sx={{
+            backgroundColor: "#FFFFFF",
+            color: "#05058C",
+            borderRadius: 2,
+            padding: useSmallFont ? "6px 40px" : "8px 50px",
+            fontSize: useSmallFont ? "22px" : "24px",
+            marginRight: useSmallFont ? "40px" : "50px",
+            "&:hover": {
+              backgroundColor: "rgba(255, 255, 255, 0.8)",
+            },
+          }}>
+          {t("common.cookieBanner.button.accept")}
         </Button>
       </Box>
     </Box>
